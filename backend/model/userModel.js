@@ -22,17 +22,17 @@ const userSchema = new mongoose.Schema({
             required: [true, "Please enter your password."],
             minlength: [8, "Password must have more than 8 characters."],
             select: false,
-            avatar: {
-                  public_id: {
-                        type: String,
-                        required: true
-                  },
-                  url: {
-                        type: String,
-                        required: true
-                  }
-
+      },
+      avatar: {
+            public_id: {
+                  type: String,
+                  required: true
+            },
+            url: {
+                  type: String,
+                  required: true
             }
+
       },
       role: {
             type: String,
@@ -76,7 +76,7 @@ userSchema.methods.getResetPasswordToken = function () {
             .update(resetToken)
             .digest("hex");
 
-      this.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
+      this.resetPasswordExpire = Date.now() + 5 * 60 * 1000;
 
       return resetToken;
 
