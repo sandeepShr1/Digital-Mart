@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom"
 import playStore from "../../../images/playstore.png";
 import appStore from "../../../images/Appstore.png";
 import "./Footer.css";
@@ -22,9 +23,9 @@ const Footer = () => {
 
                   <div className="rightFooter">
                         <h4>Follow Us</h4>
-                        <a href="#">Instagram</a>
-                        <a href="#">Youtube</a>
-                        <a href="#">Facebook</a>
+                        <Link to="#">Instagram</Link>
+                        <Link to="#">Youtube</Link>
+                        <Link to="#">Facebook</Link>
                   </div>
             </footer>
       )
