@@ -15,8 +15,8 @@ const Footer = () => {
                   </div>
 
                   <div className="midFooter">
-                        <h1>ECOMMERCE.</h1>
-                        <p>High Quality is our first priority</p>
+                        <h1>DIGITALMART.</h1>
+                        <p>Buy From Home</p>
 
                         <p>Copyrights 2021 &copy; MartNepal</p>
                   </div>

@@ -1,53 +1,31 @@
-import React, { useEffect } from 'react';
-import { CgMouse } from "react-icons/all";
-import './Home.css';
-import Product from "./Product.js";
+import React from 'react';
 import MetaData from "../layout/MetaData";
-import { getProduct } from '../../redux/actions/productAction';
-import { useSelector, useDispatch } from "react-redux";
-import Loader from '../layout/Loader/Loader';
-import { useAlert } from "react-alert";
-
+import { CgMouse } from "react-icons/all";
+import "./Home.css"
 const Home = () => {
-      const alert = useAlert();
-      const { loading, products, error, productsCount } = useSelector(state => state.products)
-      const dispatch = useDispatch();
-      useEffect(() => {
-            if (error) {
-                  return alert.error(error);
-            }
-            dispatch(getProduct());
-
-      }, [dispatch, error, alert]);
       return (
-
             <>
-                  {loading ? (< Loader />) : (<>
-                        <MetaData title="ECOMMERCE" />
-                        <div className="banner">
-                              <p>Welcome to Ecommerce</p>
-                              <h1>FIND AMAZING PRODUCTS BELOW</h1>
+                  <MetaData title="ECOMMERCE" />
+                  <div className="banner">
+                        <p>Welcome to Ecommerce</p>
+                        <h1>FIND AMAZING PRODUCTS BELOW</h1>
 
-                              <a href="#container">
-                                    <button>
-                                          Scroll <CgMouse />
-                                    </button>
-                              </a>
-                        </div>
+                        <a href="#container">
+                              <button>
+                                    Scroll <CgMouse />
+                              </button>
+                        </a>
+                  </div>
 
-                        <h2 className="homeHeading">Features Products</h2>
+                  <h2 className="homeHeading">Features Products</h2>
 
-                        <div className="container" id='container'>
-                              {products && products.map(product => {
-                                    return <Product product={product} key={product._id} />
-                              })}
+                  <div className="container" id='container'>
+                        {/* {products && products.map(product => {
+                              return <Product product={product} key={product._id} />
+                        })} */}
 
-                        </div>
-                  </>)}
-
+                  </div>
             </>
-
       )
 }
-
 export default Home;
