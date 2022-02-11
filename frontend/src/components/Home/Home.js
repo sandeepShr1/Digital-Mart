@@ -18,7 +18,7 @@ const Home = () => {
             }
             dispatch(getProduct());
 
-      }, [dispatch, error]);
+      }, [dispatch, error, alert]);
       return (
 
             <>
