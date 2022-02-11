@@ -1,0 +1,27 @@
+.speedDial {
+      position: fixed;
+      right   : 3vmax;
+      top     : 3vmax;
+}
+
+.speedDialIcon {
+      width        : 56px;
+      height       : 56px;
+      border-radius: 100%;
+}
+
+.menuBurger {
+      width          : 3vmax;
+      height         : 4.5vmax;
+      position       : fixed;
+      top            : 2vmax;
+      left           : 2vmax;
+      display        : flex;
+      flex-direction : column;
+      justify-content: space-between;
+      align-items    : center;
+      cursor         : pointer;
+      padding        : 1vmax;
+      overflow       : hidden;
+      z-index        : 1000;
+}

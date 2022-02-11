@@ -1,5 +1,5 @@
 .banner {
-      background-image: linear-gradient(to right, #635dc0, #3027ae);
+      background-image: linear-gradient(to right, #c15fbb, #615ac4);
       height          : 100vmin;
       display         : flex;
       flex-direction  : column;
@@ -31,7 +31,7 @@
 }
 
 .banner>a>button:hover {
-      background-color: #635dc0;
+      background-color: #c15fbb;
       color           : white;
 }
 

@@ -1,31 +1,52 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MetaData from "../layout/MetaData";
 import { CgMouse } from "react-icons/all";
-import "./Home.css"
+import "./Home.css";
+import { useSelector, useDispatch } from "react-redux"
+import ProductCart from './ProductCart';
+import { getProduct } from "../../redux/actions/productActions";
+import Loader from "../layout/Loader/Loader"
+import { useAlert } from "react-alert";
+
 const Home = () => {
+      const alert = useAlert();
+      const { products, loading, error, productsCount } = useSelector(state => state.products);
+      const dispatch = useDispatch();
+
+      useEffect(() => {
+            if (error) {
+                  return alert.error(error);
+            }
+            dispatch(getProduct());
+
+      }, [dispatch, error]);
       return (
             <>
-                  <MetaData title="ECOMMERCE" />
-                  <div className="banner">
-                        <p>Welcome to Ecommerce</p>
-                        <h1>FIND AMAZING PRODUCTS BELOW</h1>
+                  {loading ? (<Loader />) : <>
+                        <MetaData title="ECOMMERCE" />
+                        <div className="banner">
+                              <p>Welcome to Ecommerce</p>
+                              <h1>FIND AMAZING PRODUCTS BELOW</h1>
 
-                        <a href="#container">
-                              <button>
-                                    Scroll <CgMouse />
-                              </button>
-                        </a>
-                  </div>
+                              <a href="#container">
+                                    <button>
+                                          Scroll <CgMouse />
+                                    </button>
+                              </a>
+                        </div>
 
-                  <h2 className="homeHeading">Features Products</h2>
+                        <h2 className="homeHeading">Features Products</h2>
 
-                  <div className="container" id='container'>
-                        {/* {products && products.map(product => {
-                              return <Product product={product} key={product._id} />
-                        })} */}
+                        <div className="container" id='container'>
+                              {products && products.map(product => {
+                                    return <ProductCart product={product} key={product._id} />
+                              })}
 
-                  </div>
+                        </div>
+                  </>
+                  }
             </>
+
       )
 }
 export default Home;
