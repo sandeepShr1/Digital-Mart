@@ -4,7 +4,7 @@ import { CgMouse } from "react-icons/all";
 import "./Home.css";
 import { useSelector, useDispatch } from "react-redux"
 import ProductCart from './ProductCart';
-import { getProduct } from "../../redux/actions/productActions";
+import { clearError, getProduct } from "../../redux/actions/productActions";
 import Loader from "../layout/Loader/Loader"
 import { useAlert } from "react-alert";
 
@@ -15,7 +15,8 @@ const Home = () => {
 
       useEffect(() => {
             if (error) {
-                  return alert.error(error);
+                  alert.error(error);
+                  dispatch(clearError())
             }
             dispatch(getProduct());
 
