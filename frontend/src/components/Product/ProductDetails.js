@@ -67,7 +67,7 @@ const ProductDetails = () => {
                                                 </span>
                                           </div>
                                           <div className="detailsBlock-3">
-                                                <h1>{`₹${product.price}`}</h1>
+                                                <h1>{`Rs.${product.price}`}</h1>
                                                 <div className="detailsBlock-3-1">
                                                       <div className="detailsBlock-3-1-1">
                                                             <button >-</button>
@@ -102,7 +102,7 @@ const ProductDetails = () => {
 
                               {product.reviews && product.reviews[0] ? (
                                     <div className="reviews">
-                                          {product.reviews && product.reviews.map((review) => <ReviewCard review={review} />)}
+                                          {product.reviews && product.reviews.map((review) => <ReviewCard key={review._id} review={review} />)}
                                     </div>
                               ) : (
                                     <p className="noReviews">No reviews</p>
