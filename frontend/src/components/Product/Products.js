@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom';
 import Pagination from "react-js-pagination";
 import Slider from "@mui/material/Slider";
 import Typography from '@mui/material/Typography';
+import MetaData from "../layout/MetaData";
 
 
 
@@ -29,6 +30,7 @@ const Products = () => {
       const [currentPage, setCurrentPage] = useState(1);
       const [price, setPrice] = useState([0, 25000]);
       const [category, setCategory] = useState("");
+      const [ratings, setRatings] = useState(0);
 
       const { keyword } = useParams();
 
@@ -42,15 +44,16 @@ const Products = () => {
 
       useEffect(() => {
             if (error) {
-                  alert.error(error());
-                  dispatch(clearError);
+                  alert.error(error);
+                  dispatch(clearError());
             }
-            dispatch(getProduct(keyword, currentPage, price, category))
-      }, [dispatch, error, alert, keyword, currentPage, price, category]);
+            dispatch(getProduct(keyword, currentPage, price, category, ratings))
+      }, [dispatch, error, alert, keyword, currentPage, price, category, ratings]);
       return (
             <>
                   {loading ? <Loader /> : (
                         <>
+                              <MetaData title="Products --Ecommerce" />
                               <h2 className="productsHeading">Latest Products</h2>
 
                               <div className="products">
@@ -82,6 +85,21 @@ const Products = () => {
                                                 </li>
                                           })}
                                     </ul>
+
+                                    <fieldset>
+                                          <Typography component="legend" >Ratings</Typography>
+                                          <Slider
+                                                value={ratings}
+                                                onChange={(e, newRating) => {
+                                                      setRatings(newRating)
+                                                }}
+                                                aria-labelledby="continuous-slider"
+                                                valueLabelDisplay='auto'
+                                                min={0}
+                                                max={5}
+
+                                          />
+                                    </fieldset>
                               </div>
 
                               {resultPerPage < count && (
