@@ -12,6 +12,14 @@ import Typography from '@mui/material/Typography';
 
 
 
+const categories = [
+      "Laptop",
+      "Footwear",
+      "Tops",
+      "Attire",
+      "Camera",
+      "SmartPhones"
+]
 
 const Products = () => {
       const alert = useAlert();
@@ -20,6 +28,7 @@ const Products = () => {
 
       const [currentPage, setCurrentPage] = useState(1);
       const [price, setPrice] = useState([0, 25000]);
+      const [category, setCategory] = useState("");
 
       const { keyword } = useParams();
 
@@ -36,8 +45,8 @@ const Products = () => {
                   alert.error(error());
                   dispatch(clearError);
             }
-            dispatch(getProduct(keyword, currentPage, price))
-      }, [dispatch, error, alert, keyword, currentPage, price]);
+            dispatch(getProduct(keyword, currentPage, price, category))
+      }, [dispatch, error, alert, keyword, currentPage, price, category]);
       return (
             <>
                   {loading ? <Loader /> : (
@@ -61,7 +70,18 @@ const Products = () => {
                                           min={0}
                                           max={25000}
                                     />
-
+                                    <Typography >Categories</Typography>
+                                    <ul className="categoryBox">
+                                          {categories.map((category) => {
+                                                return <li
+                                                      className='category-link'
+                                                      key={category}
+                                                      onClick={() => setCategory(category)}
+                                                >
+                                                      {category}
+                                                </li>
+                                          })}
+                                    </ul>
                               </div>
 
                               {resultPerPage < count && (
