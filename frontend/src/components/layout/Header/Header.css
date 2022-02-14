@@ -9,19 +9,3 @@
       height       : 56px;
       border-radius: 100%;
 }
-
-.menuBurger {
-      width          : 3vmax;
-      height         : 2.5vmax;
-      position       : fixed;
-      top            : 2vmax;
-      left           : 2vmax;
-      display        : flex;
-      flex-direction : column;
-      justify-content: space-between;
-      align-items    : center;
-      cursor         : pointer;
-      padding        : 1vmax;
-      overflow       : hidden;
-      z-index        : 1000;
-}

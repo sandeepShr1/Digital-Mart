@@ -43,15 +43,18 @@
 }
 
 @media screen and (max-width: 600px) {
+
       .searchBox>input[type="text"] {
-            width : 100%;
-            font  : 300 4vw cursive;
-            height: 10%;
+            width      : 100%;
+            font       : 300 4vw cursive;
+            height     : 8%;
+            margin-left: 1vmax;
       }
 
       .searchBox>input[type="submit"] {
-            height: 10%;
-            width : 30%;
-            font  : 300 4vw "Roboto";
+            height      : 8%;
+            width       : 30%;
+            font        : 300 4vw "Roboto";
+            margin-right: 1vmax;
       }
 }
