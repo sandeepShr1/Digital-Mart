@@ -8,6 +8,7 @@ import ProductDetails from "./components/Product/ProductDetails"
 import Products from "./components/Product/Products"
 import Search from "./components/Product/Search";
 import WebFont from "webfontloader";
+import LoginSignup from './components/User/LoginSignup.js';
 
 function App() {
   useEffect(() => {
@@ -25,6 +26,7 @@ function App() {
       <Route exact path="/products" element={<Products />} />
       <Route path="/products/:keyword" element={<Products />} />
       <Route exact path="/search" element={<Search />} />
+      <Route exact path="/login" element={<LoginSignup />} />
     </Routes>
     <Footer />
   </Router>
