@@ -5,15 +5,23 @@ const sendToken = require("../utils/generateToken");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
 const { findByIdAndDelete, findById } = require("../model/userModel");
+const cloudinary = require("cloudinary");
 
 // Registering User
 exports.registerUser = catchAsyncError(async (req, res, next) => {
+
+      const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+            folder: "avatars",
+            width: 150,
+            crop: "scale",
+      });
+
       const { name, email, password } = req.body;
       const user = await User.create({
             name, email, password,
             avatar: {
-                  public_id: "public",
-                  url: "profilePictureUrl"
+                  public_id: myCloud.public_id,
+                  url: myCloud.secure_url,
             }
       });
 

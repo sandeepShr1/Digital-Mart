@@ -4,11 +4,13 @@ export const userReducer = (state = { user: {} }, action) => {
 
       switch (action.type) {
             case actionType.LOGIN_REQUEST:
+            case actionType.REGISTER_REQUEST:
                   return {
                         loading: true,
                         isAuthenticated: false,
                   }
             case actionType.LOGIN_SUCCESS:
+            case actionType.REGISTER_SUCCESS:
                   return {
                         ...state,
                         loading: false,
@@ -16,6 +18,7 @@ export const userReducer = (state = { user: {} }, action) => {
                         user: action.payload
                   }
             case actionType.LOGIN_FAIL:
+            case actionType.REGISTER_FAIL:
                   return {
                         ...state,
                         loading: false,
