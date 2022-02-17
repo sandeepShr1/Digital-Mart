@@ -1,38 +1,62 @@
-import * as actionType from '../constants/userConstants';
+import * as actionTypes from '../constants/userConstants';
 
 export const userReducer = (state = { user: {} }, action) => {
-
       switch (action.type) {
-            case actionType.LOGIN_REQUEST:
-            case actionType.REGISTER_REQUEST:
+            case actionTypes.LOGIN_REQUEST:
+            case actionTypes.REGISTER_REQUEST:
+            case actionTypes.LOAD_USER_REQUEST:
                   return {
                         loading: true,
                         isAuthenticated: false,
-                  }
-            case actionType.LOGIN_SUCCESS:
-            case actionType.REGISTER_SUCCESS:
+                  };
+            case actionTypes.LOGIN_SUCCESS:
+            case actionTypes.REGISTER_SUCCESS:
+            case actionTypes.LOAD_USER_SUCCESS:
                   return {
                         ...state,
                         loading: false,
                         isAuthenticated: true,
-                        user: action.payload
-                  }
-            case actionType.LOGIN_FAIL:
-            case actionType.REGISTER_FAIL:
+                        user: action.payload,
+                  };
+
+            case actionTypes.LOGOUT_SUCCESS:
+                  return {
+                        loading: false,
+                        user: null,
+                        isAuthenticated: false,
+                  };
+            case actionTypes.LOGIN_FAIL:
+            case actionTypes.REGISTER_FAIL:
                   return {
                         ...state,
                         loading: false,
                         isAuthenticated: false,
                         user: null,
-                        error: action.payload
-                  }
-            case actionType.CLEAR_ERRORS:
+                        error: action.payload,
+                  };
+
+            case actionTypes.LOAD_USER_FAIL:
+                  return {
+                        loading: false,
+                        isAuthenticated: false,
+                        user: null,
+                        error: action.payload,
+                  };
+
+            case actionTypes.LOGOUT_FAIL:
+                  return {
+                        ...state,
+                        loading: false,
+                        error: action.payload,
+                  };
+
+            case actionTypes.CLEAR_ERRORS:
                   return {
                         ...state,
                         error: null,
-                  }
+                  };
 
             default:
-                  return state
+                  return state;
       }
-}
+};

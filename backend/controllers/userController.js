@@ -44,7 +44,7 @@ exports.loginUser = catchAsyncError(async (req, res, next) => {
       }
 
       const isPasswordMatched = await user.comparePassword(password);
-      console.log(isPasswordMatched)
+
 
       if (!isPasswordMatched) {
             return next(new ErrorHandler("Invalid email or password", 401))
@@ -141,7 +141,6 @@ exports.resetPassword = catchAsyncError(async (req, res, next) => {
 // Get User Detail
 exports.getUserDetails = catchAsyncError(async (req, res, next) => {
       const user = await User.findById(req.user.id);
-      console.log(req.user.id)
 
       res.status(200).json({
             success: true,
@@ -151,7 +150,6 @@ exports.getUserDetails = catchAsyncError(async (req, res, next) => {
 
 // Change user password
 exports.updatePassword = catchAsyncError(async (req, res, next) => {
-      console.log(req.user.id);
       const user = await User.findById(req.user.id).select("+password");
 
       const isPasswordMatched = await user.comparePassword(req.body.oldPassword);
@@ -179,7 +177,6 @@ exports.updateProfile = catchAsyncError(async (req, res, next) => {
             name: req.body.name,
             email: req.body.email
       }
-      console.log(req.user.id)
       const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
             new: true,
             runValidators: true,
@@ -225,7 +222,6 @@ exports.updateUserProfile = catchAsyncError(async (req, res, next) => {
             email: req.body.email,
             role: req.body.role
       }
-      console.log(req.user.id)
       const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
             new: true,
             runValidators: true,

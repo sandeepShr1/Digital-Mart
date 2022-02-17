@@ -2,6 +2,7 @@ import axios from "axios";
 
 import * as actionTypes from "../constants/userConstants";
 
+//Login
 export const login = (email, password) => async (dispatch) => {
       try {
             dispatch({ type: actionTypes.LOGIN_REQUEST });
@@ -39,6 +40,31 @@ export const register = (userData) => async (dispatch) => {
                   type: actionTypes.REGISTER_FAIL,
                   payload: error.response.data.message,
             });
+      }
+};
+
+
+// Load User
+export const loadUser = () => async (dispatch) => {
+      try {
+            dispatch({ type: actionTypes.LOAD_USER_REQUEST });
+
+            const { data } = await axios.get(`/api/v1/me`);
+
+            dispatch({ type: actionTypes.LOAD_USER_SUCCESS, payload: data.user });
+      } catch (error) {
+            dispatch({ type: actionTypes.LOAD_USER_FAIL, payload: error.response.data.message });
+      }
+};
+
+// Logout User
+export const logout = () => async (dispatch) => {
+      try {
+            await axios.get(`/api/v1/logout`);
+
+            dispatch({ type: actionTypes.LOGOUT_SUCCESS });
+      } catch (error) {
+            dispatch({ type: actionTypes.LOGOUT_FAIL, payload: error.response.data.message });
       }
 };
 
