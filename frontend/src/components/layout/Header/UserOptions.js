@@ -6,6 +6,7 @@ import { Dashboard, Person, ExitToApp, ListAlt } from "@mui/icons-material";
 import { useAlert } from "react-alert";
 import { useDispatch } from 'react-redux';
 import { logout } from '../../../redux/actions/userActions';
+import { Backdrop } from '@mui/material';
 
 const UserOptions = ({ user }) => {
 
@@ -48,11 +49,13 @@ const UserOptions = ({ user }) => {
       return (
             <>
 
+                  <Backdrop open={open} style={{ zIndex: "10" }} />
                   <SpeedDial
                         ariaLabel='SpeedDial tooltip'
                         onClose={() => setOpen(false)}
                         onOpen={() => setOpen(true)}
                         open={open}
+                        style={{ zIndex: "11" }}
                         icon={<img
                               className='speedDialIcon'
                               src={user.avatar.url ? user.avatar.url : "/Profile.png"}
@@ -63,6 +66,7 @@ const UserOptions = ({ user }) => {
                   >
                         {options.map((item) => (
                               <SpeedDialAction
+                                    key={item.name}
                                     icon={item.icon}
                                     tooltipTitle={item.name}
                                     onClick={item.func}

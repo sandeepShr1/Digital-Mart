@@ -60,3 +60,43 @@ export const userReducer = (state = { user: {} }, action) => {
                   return state;
       }
 };
+
+export const profileReducer = (state = {}, action) => {
+      switch (action.type) {
+            case actionTypes.UPDATE_PROFILE_REQUEST:
+                  return {
+                        ...state,
+                        loading: true,
+
+                  }
+            case actionTypes.UPDATE_PROFILE_SUCCESS:
+                  return {
+                        ...state,
+                        loading: false,
+                        isUpdated: action.payload
+
+                  }
+            case actionTypes.UPDATE_PROFILE_RESET:
+                  return {
+                        ...state,
+                        loading: false,
+                        isUpdated: false
+
+                  }
+            case actionTypes.UPDATE_PROFILE_FAIL:
+                  return {
+                        ...state,
+                        loading: false,
+                        error: action.payload
+
+                  }
+            case actionTypes.CLEAR_ERRORS:
+                  return {
+                        ...state,
+                        error: null,
+                  };
+
+            default:
+                  return state;
+      }
+}
