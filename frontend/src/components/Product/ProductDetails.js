@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom';
 import Carousel from 'react-material-ui-carousel'
@@ -11,6 +11,9 @@ import ReviewCard from "../Product/ReviewCard";
 import { useAlert } from "react-alert";
 
 const ProductDetails = () => {
+
+      const [quantity, setQuantity] = useState(1);
+
       const alert = useAlert();
       const { id } = useParams();
       const { product, loading, error } = useSelector(state => state.productDetails);
@@ -22,6 +25,15 @@ const ProductDetails = () => {
             size: window.innerWidth < 900 ? 20 : 25,
             value: product.ratings,
             isHalf: true
+      }
+
+      const decreaseQuantity = () => {
+            let qty = quantity - 1
+            setQuantity(qty)
+      }
+      const increaseQuantity = () => {
+            let qty = quantity + 1
+            setQuantity(qty)
       }
 
       useEffect(() => {
@@ -54,6 +66,7 @@ const ProductDetails = () => {
                                           </Carousel>
                                     </div>
 
+
                                     <div>
                                           <div className="detailsBlock-1">
                                                 <h2>{product.name}</h2>
@@ -70,9 +83,9 @@ const ProductDetails = () => {
                                                 <h1>{`Rs.${product.price}`}</h1>
                                                 <div className="detailsBlock-3-1">
                                                       <div className="detailsBlock-3-1-1">
-                                                            <button >-</button>
-                                                            <input readOnly type="number" value={1} />
-                                                            <button >+</button>
+                                                            <button onClick={decreaseQuantity}>-</button>
+                                                            <input readOnly type="number" value={quantity} />
+                                                            <button onClick={increaseQuantity}>+</button>
                                                       </div>
                                                       <button
                                                       >
