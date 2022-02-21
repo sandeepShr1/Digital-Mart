@@ -104,3 +104,71 @@ export const profileReducer = (state = {}, action) => {
                   return state;
       }
 }
+
+// Forgot password 
+export const forgotPasswordReducer = (state = {}, action) => {
+      switch (action.type) {
+            case actionTypes.FORGOT_PASSWORD_REQUEST:
+                  return {
+                        ...state,
+                        loading: true,
+                        error: null
+                  }
+            case actionTypes.FORGOT_PASSWORD_SUCCESS:
+                  return {
+                        ...state,
+                        loading: false,
+                        message: action.payload
+
+                  }
+            case actionTypes.FORGOT_PASSWORD_FAIL:
+                  return {
+                        ...state,
+                        loading: false,
+                        error: action.payload
+
+                  }
+            case actionTypes.CLEAR_ERRORS:
+                  return {
+                        ...state,
+                        error: null,
+                  };
+
+            default:
+                  return state;
+      }
+}
+
+// Forgot password 
+export const resetPasswordReducer = (state = {}, action) => {
+      switch (action.type) {
+            case actionTypes.RESET_PASSWORD_REQUEST:
+                  return {
+                        ...state,
+                        loading: true,
+                        error: null
+                  }
+            case actionTypes.RESET_PASSWORD_SUCCESS:
+                  return {
+                        ...state,
+                        loading: false,
+                        success: action.payload
+
+                  }
+            case actionTypes.RESET_PASSWORD_FAIL:
+                  return {
+                        ...state,
+                        loading: false,
+                        error: action.payload
+
+                  }
+            case actionTypes.CLEAR_ERRORS:
+                  return {
+                        ...state,
+                        error: null,
+                  };
+
+            default:
+                  return state;
+      }
+}
