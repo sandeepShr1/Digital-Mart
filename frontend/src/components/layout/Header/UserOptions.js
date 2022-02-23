@@ -4,12 +4,14 @@ import { useNavigate } from "react-router-dom"
 import { SpeedDial, SpeedDialAction } from "@material-ui/lab";
 import { Dashboard, Person, ExitToApp, ListAlt } from "@mui/icons-material";
 import { useAlert } from "react-alert";
-import { useDispatch } from 'react-redux';
 import { logout } from '../../../redux/actions/userActions';
 import { Backdrop } from '@mui/material';
+import { ShoppingCart } from "@mui/icons-material"
+import { useDispatch, useSelector } from "react-redux"
 
 const UserOptions = ({ user }) => {
 
+      const { cartItems } = useSelector(state => state.cart);
       const [open, setOpen] = useState(false);
       const history = useNavigate();
       const alert = useAlert();
@@ -17,6 +19,7 @@ const UserOptions = ({ user }) => {
 
       const options = [
             { icon: <Person />, name: "Profile", func: account },
+            { icon: <ShoppingCart style={{ color: cartItems.length > 0 ? "tomato" : "unset" }} />, name: `Cart(${cartItems.length})`, func: cart },
             { icon: <ListAlt />, name: "Orders", func: orders },
             { icon: <ExitToApp />, name: "Logout", func: logoutUser },
       ]
@@ -35,9 +38,13 @@ const UserOptions = ({ user }) => {
       function account() {
             history("/account")
       }
+      function cart() {
+            history("/cart")
+      }
       function orders() {
             history("/orders")
       }
+
       function logoutUser() {
             dispatch(logout());
             alert.success("Logout Successfully");
@@ -69,6 +76,7 @@ const UserOptions = ({ user }) => {
                                     key={item.name}
                                     icon={item.icon}
                                     tooltipTitle={item.name}
+                                    tooltipOpen={window.innerWidth <= 600 ? true : false}
                                     onClick={item.func}
                               />
                         ))}
