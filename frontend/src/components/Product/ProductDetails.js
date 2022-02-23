@@ -9,6 +9,7 @@ import MetaData from "../layout/MetaData";
 import Loader from "../layout/Loader/Loader";
 import ReviewCard from "../Product/ReviewCard";
 import { useAlert } from "react-alert";
+import { addToCart } from "../../redux/actions/cartActions";
 
 const ProductDetails = () => {
 
@@ -28,12 +29,21 @@ const ProductDetails = () => {
       }
 
       const decreaseQuantity = () => {
+            if (quantity <= 1) return;
             let qty = quantity - 1
             setQuantity(qty)
       }
       const increaseQuantity = () => {
+            if (quantity >= product.stock) return;
             let qty = quantity + 1
             setQuantity(qty)
+
+      }
+
+      const addToCartHandler = () => {
+            console.log("added")
+            dispatch(addToCart(id, quantity));
+            alert.success("Item Added To Cart.")
       }
 
       useEffect(() => {
@@ -88,6 +98,7 @@ const ProductDetails = () => {
                                                             <button onClick={increaseQuantity}>+</button>
                                                       </div>
                                                       <button
+                                                            onClick={addToCartHandler}
                                                       >
                                                             Add to Cart
                                                       </button>

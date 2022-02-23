@@ -85,7 +85,6 @@ export const updateProfile = (userData) => async (dispatch) => {
             });
       }
 };
-
 // Update password
 export const updatePassword = (passwords) => async (dispatch) => {
       try {

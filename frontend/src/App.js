@@ -19,6 +19,8 @@ import UpdateProfile from "./components/User/UpdateProfile"
 import UpdatePassword from "./components/User/UpdatePassword"
 import ForgotPassword from "./components/User/ForgotPassword"
 import ResetPassword from "./components/User/ResetPassword.js"
+import Cart from "./components/Cart/Cart"
+
 
 function App() {
 
@@ -30,7 +32,10 @@ function App() {
         families: ["Roboto", "Droid Sans", "Chilanka"],
       },
     });
-    store.dispatch(loadUser());
+    if (isAuthenticated) {
+      store.dispatch(loadUser());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return <Router>
     <Header />
@@ -42,6 +47,7 @@ function App() {
       <Route path="/products/:keyword" element={<Products />} />
       <Route exact path="/search" element={<Search />} />
       <Route exact path="/login" element={<LoginSignup />} />
+      <Route exact path="/cart" element={<Cart />} />
       <Route path="/account" element={(<ProtectedRoute><Profile /></ProtectedRoute>)} />
       <Route path="/password/forgot" element={<ForgotPassword />} />
       <Route path="/password/reset/:token" element={<ResetPassword />} />

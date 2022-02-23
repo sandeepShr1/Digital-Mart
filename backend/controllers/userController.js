@@ -4,7 +4,6 @@ const User = require("../model/userModel");
 const sendToken = require("../utils/generateToken");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
-const { findByIdAndDelete, findById } = require("../model/userModel");
 const cloudinary = require("cloudinary");
 
 // Registering User
@@ -170,23 +169,18 @@ exports.updatePassword = catchAsyncError(async (req, res, next) => {
 
 });
 
-// update user details
+// update User Profile
 exports.updateProfile = catchAsyncError(async (req, res, next) => {
-
-      const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-            folder: "avatars",
-            width: 150,
-            crop: "scale",
-      });
-
       const newUserData = {
             name: req.body.name,
-            email: req.body.email
-      }
+            email: req.body.email,
+      };
 
-      if (req.body.avatar !== "") {
+      if (req.body.avatar !== "" && req.body.avatar !== "/Profile.png") {
             const user = await User.findById(req.user.id);
+
             const imageId = user.avatar.public_id;
+
             await cloudinary.v2.uploader.destroy(imageId);
 
             const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
@@ -194,25 +188,23 @@ exports.updateProfile = catchAsyncError(async (req, res, next) => {
                   width: 150,
                   crop: "scale",
             });
+
             newUserData.avatar = {
                   public_id: myCloud.public_id,
                   url: myCloud.secure_url,
-            }
+            };
       }
 
       const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
             new: true,
             runValidators: true,
-            useFindAndModify: false
+            useFindAndModify: false,
       });
 
       res.status(200).json({
             success: true,
-            user
-      })
-
+      });
 });
-
 // Get all users(admin)
 exports.getAllUsers = catchAsyncError(async (req, res, next) => {
       const users = await User.find();
