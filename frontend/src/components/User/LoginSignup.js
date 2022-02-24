@@ -68,6 +68,9 @@ const LoginSignup = () => {
             }
       };
 
+      const redirect = window.location.search
+            ? "/" + window.location.search.split("=")[1]
+            : "/account";
 
       useEffect(() => {
             if (error) {
@@ -76,9 +79,9 @@ const LoginSignup = () => {
             }
 
             if (isAuthenticated) {
-                  history("/account");
+                  history(redirect);
             }
-      }, [dispatch, error, alert, history, isAuthenticated]);
+      }, [dispatch, error, alert, history, redirect, isAuthenticated]);
       const switchTabs = (e, tab) => {
             if (tab === "login") {
                   switcherTab.current.classList.add("shiftToNeutral");

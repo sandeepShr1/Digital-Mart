@@ -33,3 +33,13 @@ export const removeFromCart = (id) => async (dispatch, getState) => {
 
 }
 
+// Save shipping info
+export const saveShippingInfo = (data) => async (dispatch) => {
+      dispatch({
+            type: actionTypes.SAVE_SHIPPING_INFO,
+            payload: data
+      })
+
+      localStorage.setItem("shippingInfo", JSON.stringify(data))
+}
+

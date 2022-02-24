@@ -19,7 +19,7 @@ const ProductCart = ({ product }) => {
                   <div>
                         <ReactStarts {...options} /> <span>({product.numOfReviews} Reviews)</span>
                   </div>
-                  <span>Rs.{product.price}</span>
+                  <span>रू{product.price}</span>
             </Link>
       )
 }

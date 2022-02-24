@@ -18,8 +18,10 @@ import ProtectedRoute from './components/Route/ProtectedRoute';
 import UpdateProfile from "./components/User/UpdateProfile"
 import UpdatePassword from "./components/User/UpdatePassword"
 import ForgotPassword from "./components/User/ForgotPassword"
-import ResetPassword from "./components/User/ResetPassword.js"
+import ResetPassword from "./components/User/ResetPassword"
 import Cart from "./components/Cart/Cart"
+import Shipping from "./components/Cart/Shipping"
+import ConfirmOrder from "./components/Cart/ConfirmOrder"
 
 
 function App() {
@@ -32,11 +34,10 @@ function App() {
         families: ["Roboto", "Droid Sans", "Chilanka"],
       },
     });
-    if (isAuthenticated) {
-      store.dispatch(loadUser());
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    store.dispatch(loadUser());
   }, []);
+
+
   return <Router>
     <Header />
     {isAuthenticated && <UserOptions user={user} />}
@@ -53,6 +54,8 @@ function App() {
       <Route path="/password/reset/:token" element={<ResetPassword />} />
       <Route path="/me/update" element={(<ProtectedRoute><UpdateProfile /></ProtectedRoute>)} />
       <Route path="/password/update" element={(<ProtectedRoute><UpdatePassword /></ProtectedRoute>)} />
+      <Route path="/shipping" element={(<ProtectedRoute><Shipping /></ProtectedRoute>)} />
+      <Route path="/order/confirm" element={(<ProtectedRoute><ConfirmOrder /></ProtectedRoute>)} />
     </Routes>
     <Footer />
   </Router>
