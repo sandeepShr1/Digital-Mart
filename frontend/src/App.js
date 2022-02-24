@@ -22,6 +22,8 @@ import ResetPassword from "./components/User/ResetPassword"
 import Cart from "./components/Cart/Cart"
 import Shipping from "./components/Cart/Shipping"
 import ConfirmOrder from "./components/Cart/ConfirmOrder"
+import Payment from "./components/Cart/Payment.js"
+import Success from "./components/Cart/Success.js"
 
 
 function App() {
@@ -56,6 +58,8 @@ function App() {
       <Route path="/password/update" element={(<ProtectedRoute><UpdatePassword /></ProtectedRoute>)} />
       <Route path="/shipping" element={(<ProtectedRoute><Shipping /></ProtectedRoute>)} />
       <Route path="/order/confirm" element={(<ProtectedRoute><ConfirmOrder /></ProtectedRoute>)} />
+      <Route path="/process/payment" element={(<ProtectedRoute><Payment /></ProtectedRoute>)} />
+      <Route path="/success" element={(<ProtectedRoute><Success /></ProtectedRoute>)} />
     </Routes>
     <Footer />
   </Router>
