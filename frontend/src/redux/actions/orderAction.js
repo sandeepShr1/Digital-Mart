@@ -22,6 +22,28 @@ export const createOrder = (order) => async (dispatch) => {
       }
 };
 
+// get all my orders
+export const getMyOrders = () => async (dispatch) => {
+      try {
+            dispatch({
+                  type: actionTypes.MY_ORDERS_REQUEST
+            })
+
+            const { data } = await axios.get("/api/v1/orders/me");
+
+            dispatch({
+                  type: actionTypes.MY_ORDERS_SUCCESS,
+                  payload: data.orders
+            })
+
+      } catch (error) {
+            dispatch({
+                  type: actionTypes.CREATE_ORDER_FAIL,
+                  payload: error.response.data.message,
+            });
+      }
+}
+
 // Clearing Errors
 export const clearError = () => async (dispatch) => {
       dispatch({ type: actionTypes.CLEAR_ERRORS });

@@ -7,8 +7,14 @@ const ProtectedRoute = ({ children }) => {
 
       if (loading) return null;
 
-      return isAuthenticated
-            ? children
-            : <Navigate to="/login" replace />;
+      if (isAuthenticated === false) {
+            <Navigate to="/login" replace />
+      } else {
+            return children
+      }
+
+      // return isAuthenticated
+      //       ? children
+      //       : <Navigate to="/login" replace />;
 };
 export default ProtectedRoute;
