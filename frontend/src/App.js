@@ -25,6 +25,7 @@ import ConfirmOrder from "./components/Cart/ConfirmOrder"
 import Payment from "./components/Cart/Payment.js"
 import Success from "./components/Cart/Success.js"
 import MyOrders from "./components/Order/MyOrders.js"
+import OrderDetails from "./components/Order/OrderDetails.js"
 
 
 function App() {
@@ -62,6 +63,7 @@ function App() {
       <Route path="/process/payment" element={(<ProtectedRoute><Payment /></ProtectedRoute>)} />
       <Route path="/success" element={(<ProtectedRoute><Success /></ProtectedRoute>)} />
       <Route path="/orders" element={(<ProtectedRoute><MyOrders /></ProtectedRoute>)} />
+      <Route path="/order/:id" element={(<ProtectedRoute><OrderDetails /></ProtectedRoute>)} />
     </Routes>
     <Footer />
   </Router>

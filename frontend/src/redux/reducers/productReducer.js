@@ -60,3 +60,37 @@ export const productDetailsReducer = (state = { product: {} }, action) => {
                   return state;
       }
 };
+
+// review reducer
+export const newReviewReducer = (state = {}, action) => {
+      switch (action.type) {
+            case actionTypes.NEW_REVIEWS_REQUEST:
+                  return {
+                        loading: true,
+                        ...state
+                  };
+            case actionTypes.NEW_REVIEWS_SUCCESS:
+                  return {
+                        loading: false,
+                        success: action.payload,
+                  };
+            case actionTypes.NEW_REVIEWS_FAIL:
+                  return {
+                        loading: false,
+                        error: action.payload,
+                  };
+            case actionTypes.NEW_REVIEWS_RESET:
+                  return {
+                        loading: false,
+                        success: false,
+                  };
+
+            case actionTypes.CLEAR_ERRORS:
+                  return {
+                        ...state,
+                        error: null,
+                  };
+            default:
+                  return state;
+      }
+};

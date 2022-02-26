@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom';
-import Carousel from 'react-material-ui-carousel'
+import Carousel from "react-material-ui-carousel";
 import { clearError, getProductDetails } from "../../redux/actions/productActions";
 import Rating from "react-rating-stars-component";
 import "./ProductDetails.css";
@@ -41,7 +41,6 @@ const ProductDetails = () => {
       }
 
       const addToCartHandler = () => {
-            console.log("added")
             dispatch(addToCart(id, quantity));
             alert.success("Item Added To Cart.")
       }
@@ -63,11 +62,12 @@ const ProductDetails = () => {
                               <MetaData title={`${product.name} -- ECOMMERCE`} />
                               <div className="ProductDetails">
                                     <div>
-                                          <Carousel>
+
+                                          <Carousel  >
                                                 {product.images &&
                                                       product.images.map((item, i) => (
                                                             <img
-                                                                  className="CarouselImage"
+                                                                  className="CarouselImg"
                                                                   key={i}
                                                                   src={item.url}
                                                                   alt={`${i} Slide`}
@@ -75,7 +75,6 @@ const ProductDetails = () => {
                                                       ))}
                                           </Carousel>
                                     </div>
-
 
                                     <div>
                                           <div className="detailsBlock-1">
@@ -99,6 +98,7 @@ const ProductDetails = () => {
                                                       </div>
                                                       <button
                                                             onClick={addToCartHandler}
+                                                            disabled={product.stock < 1 ? true : false}
                                                       >
                                                             Add to Cart
                                                       </button>

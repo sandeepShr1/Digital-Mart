@@ -38,7 +38,28 @@ export const getMyOrders = () => async (dispatch) => {
 
       } catch (error) {
             dispatch({
-                  type: actionTypes.CREATE_ORDER_FAIL,
+                  type: actionTypes.MY_ORDERS_FAIL,
+                  payload: error.response.data.message,
+            });
+      }
+}
+// get a orders  details
+export const getOrderDetails = (id) => async (dispatch) => {
+      try {
+            dispatch({
+                  type: actionTypes.ORDER_DETAILS_REQUEST
+            })
+
+            const { data } = await axios.get(`/api/v1/order/${id}`);
+
+            dispatch({
+                  type: actionTypes.ORDER_DETAILS_SUCCESS,
+                  payload: data.order
+            })
+
+      } catch (error) {
+            dispatch({
+                  type: actionTypes.ORDER_DETAILS_FAIL,
                   payload: error.response.data.message,
             });
       }
