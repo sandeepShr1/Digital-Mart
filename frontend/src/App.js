@@ -38,7 +38,10 @@ function App() {
         families: ["Roboto", "Droid Sans", "Chilanka"],
       },
     });
-    store.dispatch(loadUser());
+    if (isAuthenticated) {
+      store.dispatch(loadUser());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 

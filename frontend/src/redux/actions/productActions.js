@@ -44,6 +44,27 @@ export const getProductDetails = (id) => async (dispatch) => {
             });
       }
 };
+// Get Products Details
+export const newReview = (reviewData) => async (dispatch) => {
+      try {
+            dispatch({ type: actionTypes.NEW_REVIEWS_REQUEST });
+
+            const config = { headers: { "Content-Type": "application/json" } }
+            const { data } = await axios.put("/api/v1/review", reviewData, config);
+
+            dispatch({
+                  type: actionTypes.NEW_REVIEWS_SUCCESS,
+                  payload: data.success,
+            });
+      } catch (error) {
+            dispatch({
+                  type: actionTypes.NEW_REVIEWS_FAIL,
+                  payload: error.response.data.message,
+            });
+      }
+};
+
+
 
 // clearing errors
 export const clearError = () => async (dispatch) => {
