@@ -14,7 +14,6 @@ import { loadUser } from './redux/actions/userActions.js';
 import { useSelector } from "react-redux";
 import UserOptions from './components/layout/Header/UserOptions';
 import Profile from "./components/User/Profile";
-import ProtectedRoute from './components/Route/ProtectedRoute';
 import UpdateProfile from "./components/User/UpdateProfile"
 import UpdatePassword from "./components/User/UpdatePassword"
 import ForgotPassword from "./components/User/ForgotPassword"
@@ -26,6 +25,8 @@ import Payment from "./components/Cart/Payment.js"
 import Success from "./components/Cart/Success.js"
 import MyOrders from "./components/Order/MyOrders.js"
 import OrderDetails from "./components/Order/OrderDetails.js"
+import Dashboard from "./components/Admin/Dashboard";
+import Login from "./components/User/LoginSignup";
 
 
 function App() {
@@ -38,9 +39,9 @@ function App() {
         families: ["Roboto", "Droid Sans", "Chilanka"],
       },
     });
-    if (isAuthenticated) {
-      store.dispatch(loadUser());
-    }
+
+    store.dispatch(loadUser());
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -56,17 +57,18 @@ function App() {
       <Route exact path="/search" element={<Search />} />
       <Route exact path="/login" element={<LoginSignup />} />
       <Route exact path="/cart" element={<Cart />} />
-      <Route path="/account" element={(<ProtectedRoute><Profile /></ProtectedRoute>)} />
       <Route path="/password/forgot" element={<ForgotPassword />} />
       <Route path="/password/reset/:token" element={<ResetPassword />} />
-      <Route path="/me/update" element={(<ProtectedRoute><UpdateProfile /></ProtectedRoute>)} />
-      <Route path="/password/update" element={(<ProtectedRoute><UpdatePassword /></ProtectedRoute>)} />
-      <Route path="/shipping" element={(<ProtectedRoute><Shipping /></ProtectedRoute>)} />
-      <Route path="/order/confirm" element={(<ProtectedRoute><ConfirmOrder /></ProtectedRoute>)} />
-      <Route path="/process/payment" element={(<ProtectedRoute><Payment /></ProtectedRoute>)} />
-      <Route path="/success" element={(<ProtectedRoute><Success /></ProtectedRoute>)} />
-      <Route path="/orders" element={(<ProtectedRoute><MyOrders /></ProtectedRoute>)} />
-      <Route path="/order/:id" element={(<ProtectedRoute><OrderDetails /></ProtectedRoute>)} />
+      <Route path="/account" element={isAuthenticated ? <Profile /> : <Login />} />
+      <Route path="/me/update" element={isAuthenticated ? <UpdateProfile /> : <Login />} />
+      <Route path="/password/update" element={isAuthenticated ? <UpdatePassword /> : <Login />} />
+      <Route path="/shipping" element={isAuthenticated ? <Shipping /> : <Login />} />
+      <Route path="/order/confirm" element={isAuthenticated ? <ConfirmOrder /> : <Login />} />
+      <Route path="/process/payment" element={isAuthenticated ? <Payment /> : <Login />} />
+      <Route path="/success" element={isAuthenticated ? <Success /> : <Login />} />
+      <Route path="/orders" element={isAuthenticated ? <MyOrders /> : <Login />} />
+      <Route path="/order/:id" element={isAuthenticated ? <OrderDetails /> : <Login />} />
+      <Route path="/admin/dashboard" element={isAuthenticated && user.role === "admin" ? <Dashboard /> : <Login />} />
     </Routes>
     <Footer />
   </Router>
