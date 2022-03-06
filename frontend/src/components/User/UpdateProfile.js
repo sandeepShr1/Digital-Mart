@@ -84,7 +84,7 @@ const UpdateProfile = () => {
                                           <form
                                                 className="updateProfileForm"
                                                 encType="multipart/form-data"
-                                                onSubmit={updateProfileSubmit}
+
                                           >
                                                 <div className="updateProfile">
                                                       <FaceIcon />
@@ -118,7 +118,7 @@ const UpdateProfile = () => {
                                                             onChange={updateProfileDataChange}
                                                       />
                                                 </div>
-                                                <input type="submit" value="Update" className="updateProfileBtn" />
+                                                <input type="submit" onClick={updateProfileSubmit} value="Update" className="updateProfileBtn" />
                                           </form>
                                     </div>
 

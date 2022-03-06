@@ -18,7 +18,8 @@
       filter: drop-shadow(0 0 10px tomato);
 }
 
-.sidebar a {
+.sidebar a,
+.p {
       text-decoration: none;
       color          : rgba(0, 0, 0, 0.493);
       font           : 200 1rem "Roboto";
@@ -27,6 +28,11 @@
 }
 
 .sidebar a:hover {
+      color    : tomato;
+      transform: scale(1.1);
+}
+
+.p:hover {
       color    : tomato;
       transform: scale(1.1);
 }
