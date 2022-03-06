@@ -12,6 +12,7 @@ import {
 } from '@mui/icons-material';
 import MetaData from "../layout/MetaData";
 import { useNavigate } from "react-router-dom";
+import Loader from "../layout/Loader/Loader"
 
 const NewProduct = () => {
       const dispatch = useDispatch();
@@ -91,97 +92,101 @@ const NewProduct = () => {
 
       return (
             <>
-                  <MetaData title="Create Product" />
-                  <div className="dashboard">
-                        <Sidebar />
-                        <div className="newProductContainer">
-                              <form
-                                    className="createProductForm"
-                                    encType="multipart/form-data"
-                                    onSubmit={createProductSubmitHandler}
-                              >
-                                    <h1>Create Product</h1>
+                  {loading ? <Loader /> : (
+                        <>
+                              <MetaData title="Create Product" />
+                              <div className="dashboard">
+                                    <Sidebar />
+                                    <div className="newProductContainer">
+                                          <form
+                                                className="createProductForm"
+                                                encType="multipart/form-data"
+                                                onSubmit={createProductSubmitHandler}
+                                          >
+                                                <h1>Create Product</h1>
 
-                                    <div>
-                                          <Spellcheck />
-                                          <input
-                                                type="text"
-                                                placeholder="Product Name"
-                                                required
-                                                value={name}
-                                                onChange={(e) => setName(e.target.value)}
-                                          />
+                                                <div>
+                                                      <Spellcheck />
+                                                      <input
+                                                            type="text"
+                                                            placeholder="Product Name"
+                                                            required
+                                                            value={name}
+                                                            onChange={(e) => setName(e.target.value)}
+                                                      />
+                                                </div>
+                                                <div>
+                                                      <AttachMoney />
+                                                      <input
+                                                            type="number"
+                                                            placeholder="Price"
+                                                            required
+                                                            onChange={(e) => setPrice(e.target.value)}
+                                                      />
+                                                </div>
+
+                                                <div>
+                                                      <Description />
+
+                                                      <textarea
+                                                            placeholder="Product Description"
+                                                            value={description}
+                                                            onChange={(e) => setDescription(e.target.value)}
+                                                            cols="30"
+                                                            rows="1"
+                                                      ></textarea>
+                                                </div>
+
+                                                <div>
+                                                      <AccountTree />
+                                                      <select onChange={(e) => setCategory(e.target.value)}>
+                                                            <option value="">Choose Category</option>
+                                                            {categories.map((cate) => (
+                                                                  <option key={cate} value={cate}>
+                                                                        {cate}
+                                                                  </option>
+                                                            ))}
+                                                      </select>
+                                                </div>
+
+                                                <div>
+                                                      <Storage />
+                                                      <input
+                                                            type="number"
+                                                            placeholder="Stock"
+                                                            required
+                                                            onChange={(e) => setStock(e.target.value)}
+                                                      />
+                                                </div>
+
+                                                <div id="createProductFormFile">
+                                                      <input
+                                                            type="file"
+                                                            name="avatar"
+                                                            accept="image/*"
+                                                            onChange={createProductImagesChange}
+                                                            multiple
+                                                      />
+                                                </div>
+
+                                                <div id="createProductFormImage">
+                                                      {imagesPreview.map((image, index) => (
+                                                            <img key={index} src={image} alt="Product Preview" />
+                                                      ))}
+                                                </div>
+
+                                                <Button
+                                                      id="createProductBtn"
+                                                      type="submit"
+                                                      disabled={loading ? true : false}
+                                                >
+                                                      Create
+                                                </Button>
+                                          </form>
                                     </div>
-                                    <div>
-                                          <AttachMoney />
-                                          <input
-                                                type="number"
-                                                placeholder="Price"
-                                                required
-                                                onChange={(e) => setPrice(e.target.value)}
-                                          />
-                                    </div>
-
-                                    <div>
-                                          <Description />
-
-                                          <textarea
-                                                placeholder="Product Description"
-                                                value={description}
-                                                onChange={(e) => setDescription(e.target.value)}
-                                                cols="30"
-                                                rows="1"
-                                          ></textarea>
-                                    </div>
-
-                                    <div>
-                                          <AccountTree />
-                                          <select onChange={(e) => setCategory(e.target.value)}>
-                                                <option value="">Choose Category</option>
-                                                {categories.map((cate) => (
-                                                      <option key={cate} value={cate}>
-                                                            {cate}
-                                                      </option>
-                                                ))}
-                                          </select>
-                                    </div>
-
-                                    <div>
-                                          <Storage />
-                                          <input
-                                                type="number"
-                                                placeholder="Stock"
-                                                required
-                                                onChange={(e) => setStock(e.target.value)}
-                                          />
-                                    </div>
-
-                                    <div id="createProductFormFile">
-                                          <input
-                                                type="file"
-                                                name="avatar"
-                                                accept="image/*"
-                                                onChange={createProductImagesChange}
-                                                multiple
-                                          />
-                                    </div>
-
-                                    <div id="createProductFormImage">
-                                          {imagesPreview.map((image, index) => (
-                                                <img key={index} src={image} alt="Product Preview" />
-                                          ))}
-                                    </div>
-
-                                    <Button
-                                          id="createProductBtn"
-                                          type="submit"
-                                          disabled={loading ? true : false}
-                                    >
-                                          Create
-                                    </Button>
-                              </form>
-                        </div>
-                  </div>
+                              </div>
+                        </>
+                  )}
             </>
       )
 }

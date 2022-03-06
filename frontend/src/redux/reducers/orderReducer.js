@@ -90,3 +90,35 @@ export const myOrderDetailsReducer = (state = { orderDetails: {} }, action) => {
                   return state;
       }
 }
+
+/// Admin get all orders
+export const orderListReducer = (state = {orderList:[]}, action) => {
+      switch (action.type) {
+            case actionTypes.ADMIN_ORDERS_REQUEST:
+                  return {
+                        ...state,
+                        loading: true
+                  }
+            case actionTypes.ADMIN_ORDERS_SUCCESS:
+                  return {
+                        ...state,
+                        loading: false,
+                        orderList: action.payload
+                  }
+            case actionTypes.ADMIN_ORDERS_FAIL:
+                  return {
+                        ...state,
+                        loading: false,
+                        error: action.payload
+                  }
+            case actionTypes.CLEAR_ERRORS:
+                  return {
+                        ...state,
+                        error: null,
+                  };
+
+
+            default:
+                  return state;
+      }
+}

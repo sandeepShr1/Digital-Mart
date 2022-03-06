@@ -29,6 +29,8 @@ import Dashboard from "./components/Admin/Dashboard";
 import ProductList from "./components/Admin/ProductList";
 import Login from "./components/User/LoginSignup";
 import NewProduct from './components/Admin/NewProduct';
+import UpdateProduct from './components/Admin/UpdateProduct';
+import OrderList from './components/Admin/OrderList.js';
 
 
 function App() {
@@ -74,6 +76,8 @@ function App() {
       <Route path="/admin/dashboard" element={isAuthenticated && user.role === "admin" ? <Dashboard /> : <Login />} />
       <Route path="/admin/products" element={isAuthenticated && user.role === "admin" ? <ProductList /> : <Login />} />
       <Route path="/admin/product/" element={isAuthenticated && user.role === "admin" ? <NewProduct /> : <Login />} />
+      <Route path="/admin/product/:id" element={isAuthenticated && user.role === "admin" ? <UpdateProduct /> : <Login />} />
+      <Route path="/admin/orders" element={isAuthenticated && user.role === "admin" ? <OrderList /> : <Login />} />
     </Routes>
     <Footer />
   </Router>

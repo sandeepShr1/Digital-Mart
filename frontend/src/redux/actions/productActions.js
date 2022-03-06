@@ -60,6 +60,28 @@ export const createProduct = (productData) => async (dispatch) => {
             })
       }
 }
+// Update a product admin
+
+export const updateProduct = (id, productData) => async (dispatch) => {
+      try {
+            dispatch({ type: actionTypes.UPDATE_PRODUCT_REQUEST });
+
+            const config = { headers: { "Content-Type": "multipart/form-data" } };
+            const { data } = await axios.put(`/api/v1/admin/update/${id}`, productData, config);
+
+
+            dispatch({
+                  type: actionTypes.UPDATE_PRODUCT_SUCCESS,
+                  payload: data.success
+            });
+
+      } catch (error) {
+            dispatch({
+                  type: actionTypes.UPDATE_PRODUCT_FAIL,
+                  payload: error.response.data.message
+            });
+      }
+}
 
 // Get Products Details
 export const getProductDetails = (id) => async (dispatch) => {
