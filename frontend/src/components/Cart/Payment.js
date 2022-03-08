@@ -18,10 +18,11 @@ const Payment = () => {
       const alert = useAlert();
       const dispatch = useDispatch();
 
+
       const order = {
             shippingInfo,
             orderItems: cartItems,
-            paymentInfo: { id: "112sw", status: "success" },
+            paymentInfo: { id: "112rw", status: "success" },
             itemsPrice: orderInfo.subtotal,
             taxPrice: Math.floor(orderInfo.tax),
             shippingPrice: orderInfo.shippingCharges,

@@ -92,7 +92,7 @@ export const myOrderDetailsReducer = (state = { orderDetails: {} }, action) => {
 }
 
 /// Admin get all orders
-export const orderListReducer = (state = {orderList:[]}, action) => {
+export const orderListReducer = (state = { orderList: [] }, action) => {
       switch (action.type) {
             case actionTypes.ADMIN_ORDERS_REQUEST:
                   return {
@@ -117,6 +117,56 @@ export const orderListReducer = (state = {orderList:[]}, action) => {
                         error: null,
                   };
 
+
+            default:
+                  return state;
+      }
+}
+
+// update and delete orders admin  
+export const orderReducer = (state = {}, action) => {
+      switch (action.type) {
+            case actionTypes.UPDATE_ORDERS_REQUEST:
+            case actionTypes.DELETE_ORDERS_REQUEST:
+                  return {
+                        ...state,
+                        loading: true
+                  }
+            case actionTypes.UPDATE_ORDERS_SUCCESS:
+                  return {
+                        ...state,
+                        loading: false,
+                        isUpdated: action.payload
+                  }
+            case actionTypes.DELETE_ORDERS_SUCCESS:
+                  return {
+                        ...state,
+                        loading: false,
+                        isDeleted: action.payload
+                  }
+            case actionTypes.UPDATE_ORDERS_RESET:
+                  return {
+                        ...state,
+                        loading: false,
+                        isUpdated: false
+                  }
+            case actionTypes.DELETE_ORDERS_RESET:
+                  return {
+                        ...state,
+                        loading: false,
+                        isDeleted: false
+                  }
+            case actionTypes.DELETE_ORDERS_FAIL:
+                  return {
+                        ...state,
+                        loading: false,
+                        error: action.payload
+                  }
+            case actionTypes.CLEAR_ERRORS:
+                  return {
+                        ...state,
+                        error: null,
+                  };
 
             default:
                   return state;

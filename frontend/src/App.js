@@ -30,7 +30,8 @@ import ProductList from "./components/Admin/ProductList";
 import Login from "./components/User/LoginSignup";
 import NewProduct from './components/Admin/NewProduct';
 import UpdateProduct from './components/Admin/UpdateProduct';
-import OrderList from './components/Admin/OrderList.js';
+import OrderList from './components/Admin/OrderList';
+import UpdateOrder from './components/Admin/UpdateOrder.js';
 
 
 function App() {
@@ -78,6 +79,7 @@ function App() {
       <Route path="/admin/product/" element={isAuthenticated && user.role === "admin" ? <NewProduct /> : <Login />} />
       <Route path="/admin/product/:id" element={isAuthenticated && user.role === "admin" ? <UpdateProduct /> : <Login />} />
       <Route path="/admin/orders" element={isAuthenticated && user.role === "admin" ? <OrderList /> : <Login />} />
+      <Route path="/admin/order/:id" element={isAuthenticated && user.role === "admin" ? <UpdateOrder /> : <Login />} />
     </Routes>
     <Footer />
   </Router>

@@ -7,12 +7,15 @@ import Chart from 'chart.js/auto'
 import { Doughnut, Line } from "react-chartjs-2";
 import { useDispatch, useSelector } from "react-redux";
 import { getAdminProducts } from "../../redux/actions/productActions"
+import { getOrderList } from "../../redux/actions/orderAction"
 
 const Dashboard = () => {
       const { products } = useSelector(state => state.products);
+      const { orderList } = useSelector(state => state.orderList);
       const dispatch = useDispatch()
       useEffect(() => {
             dispatch(getAdminProducts())
+            dispatch(getOrderList())
       }, [dispatch]);
 
       let outOfStock = 0;
@@ -57,12 +60,15 @@ const Dashboard = () => {
                                     <p>Total Amount : 40000</p>
                               </div>
                               <div className="dashboardSummaryBox2">
-                                    <Link to="#" >
+                                    <Link to="/admin/products" >
                                           <p>Products</p>
                                           <p>{products && products.length}</p>
                                     </Link>
                                     <Link to="#" >Users 40</Link>
-                                    <Link to="#" >Orders 40</Link>
+                                    <Link to="/admin/orders" >
+                                          <p>Orders</p>
+                                          <p>{orderList && orderList.length}</p>
+                                    </Link>
                               </div>
                         </div>
 
