@@ -134,12 +134,49 @@ export const newReview = (reviewData) => async (dispatch) => {
       } catch (error) {
             dispatch({
                   type: actionTypes.NEW_REVIEWS_FAIL,
-                  payload: error.response.data.message,
+                  payload: error.response.data.message
             });
       }
 };
 
+// get reviews admin
+export const getAllReviews = (id) => async (dispatch) => {
+      try {
+            dispatch({ type: actionTypes.GET_REVIEWS_REQUEST });
 
+            const { data } = await axios.get(`/api/v1/reviews?id=${id}`)
+
+            dispatch({
+                  type: actionTypes.GET_REVIEWS_SUCCESS,
+                  payload: data.reviews
+            })
+
+      } catch (error) {
+            dispatch({
+                  type: actionTypes.GET_REVIEWS_FAIL,
+                  payload: error.response.data.message
+            })
+      }
+}
+// delete reviews admin
+export const deleteReview = (reviewId, productId) => async (dispatch) => {
+      try {
+            dispatch({ type: actionTypes.DELETE_REVIEWS_REQUEST });
+
+            const { data } = await axios.delete(`/api/v1/reviews?id=${reviewId}&productId=${productId}`)
+
+            dispatch({
+                  type: actionTypes.DELETE_REVIEWS_SUCCESS,
+                  payload: data.success
+            })
+
+      } catch (error) {
+            dispatch({
+                  type: actionTypes.DELETE_REVIEWS_FAIL,
+                  payload: error.response.data.message
+            })
+      }
+}
 
 // clearing errors
 export const clearError = () => async (dispatch) => {

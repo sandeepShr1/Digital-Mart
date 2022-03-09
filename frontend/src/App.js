@@ -34,7 +34,8 @@ import OrderList from './components/Admin/OrderList';
 import UpdateOrder from './components/Admin/UpdateOrder';
 import Users from './components/Admin/Users.js';
 import UpdateUser from './components/Admin/UpdateUser.js';
-
+import Reviews from './components/Admin/Reviews.js';
+import NotFound from "./components/layout/NotFound/NotFound.js"
 
 function App() {
 
@@ -57,6 +58,7 @@ function App() {
     <Header />
     {isAuthenticated && <UserOptions user={user} />}
     <Routes>
+      <Route path='*' element={<NotFound />} />
       <Route exact path="/" element={<Home />} />
       <Route exact path="/product/:id" element={<ProductDetails />} />
       <Route exact path="/products" element={<Products />} />
@@ -84,6 +86,7 @@ function App() {
       <Route path="/admin/order/:id" element={isAuthenticated && user.role === "admin" ? <UpdateOrder /> : <Login />} />
       <Route path="/admin/users" element={isAuthenticated && user.role === "admin" ? <Users /> : <Login />} />
       <Route path="/admin/user/:id" element={isAuthenticated && user.role === "admin" ? <UpdateUser /> : <Login />} />
+      <Route path="/admin/reviews" element={isAuthenticated && user.role === "admin" ? <Reviews /> : <Login />} />
     </Routes>
     <Footer />
   </Router>

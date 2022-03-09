@@ -192,3 +192,73 @@ export const productReducer = (state = {}, action) => {
                   return state;
       }
 };
+
+// get Reviews admin
+export const reviewsReducer = (state = { reviews: [] }, action) => {
+      switch (action.type) {
+            case actionTypes.GET_REVIEWS_REQUEST:
+                  return {
+                        ...state,
+                        loading: true
+                  }
+            case actionTypes.GET_REVIEWS_SUCCESS:
+                  return {
+                        ...state,
+                        loading: false,
+                        reviews: action.payload
+                  }
+            case actionTypes.GET_REVIEWS_FAIL:
+                  return {
+                        ...state,
+                        loading: false,
+                        error: action.payload
+                  }
+
+            case actionTypes.CLEAR_ERRORS:
+                  return {
+                        ...state,
+                        error: null
+                  }
+
+            default:
+                  return state;
+      }
+}
+
+// delete review reducer
+export const deleteReviewReducer = (state = {}, action) => {
+      switch (action.type) {
+            case actionTypes.DELETE_REVIEWS_REQUEST:
+                  return {
+                        ...state,
+                        loading: true
+                  }
+            case actionTypes.DELETE_REVIEWS_SUCCESS:
+                  return {
+                        ...state,
+                        loading: false,
+                        isDeleted: action.payload
+                  }
+            case actionTypes.DELETE_REVIEWS_FAIL:
+                  return {
+                        ...state,
+                        loading: false,
+                        error: action.payload
+                  }
+
+            case actionTypes.DELETE_REVIEWS_RESET:
+                  return {
+                        ...state,
+                        loading: false,
+                        isDeleted: false
+                  }
+            case actionTypes.CLEAR_ERRORS:
+                  return {
+                        ...state,
+                        error: null
+                  }
+
+            default:
+                  return state;
+      }
+}
