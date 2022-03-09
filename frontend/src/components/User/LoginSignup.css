@@ -176,11 +176,11 @@
       }
 
       .login_signUp_toggle {
-            height: 5vmax;
+            height: 1.5rem;
       }
 
       .login_signUp_toggle>p {
-            font: 600 1.5vmax "Roboto";
+            font: 600 1rem "Roboto";
       }
 
       .loginForm,
@@ -190,17 +190,17 @@
 
       .loginForm>div>input,
       .signUpForm>div>input {
-            padding: 2.5vmax 5vmax;
-            font   : 500 2.5vmax "Roboto";
+            padding: 1rem 2.3rem;
+            font   : 500 1rem "Roboto";
       }
 
       .loginForm>div>svg,
       .signUpForm>div>svg {
-            font-size: 2.8vmax;
+            font-size: 1rem;
       }
 
       .loginForm>a {
-            font: 500 1.8vmax "Gill Sans";
+            font: 500 1rem "Gill Sans";
       }
 
       #registerImage>img {
@@ -210,12 +210,12 @@
 
       #registerImage>input::file-selector-button {
             height: 7vh;
-            font  : 600 1.8vmax "Roboto";
+            font  : 600 1rem "Roboto";
       }
 
       .loginBtn,
       .signUpBtn {
-            font   : 600 1.9vmax "Roboto";
+            font   : 600 1.3rem "Roboto";
             padding: 1.8vmax;
       }
 }

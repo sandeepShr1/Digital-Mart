@@ -17,6 +17,10 @@
       font  : 600 2.5vmax "Roboto";
 }
 
+.banner>p {
+      font: 400 2.5vmax "Roboto";
+}
+
 .banner>a {
       font: 300 1.4vmax "Lucida Sans";
 }

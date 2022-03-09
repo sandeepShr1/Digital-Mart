@@ -21,6 +21,9 @@ const Dashboard = () => {
             dispatch(getAllUsers())
       }, [dispatch]);
 
+      let totalAmount = 0;
+      orderList && orderList.forEach((item) => totalAmount += item.totalPrice)
+
       let outOfStock = 0;
       products && products.forEach((item) => {
             if (item.stock === 0) {
@@ -35,7 +38,7 @@ const Dashboard = () => {
                         label: "TOTAL AMOUNT",
                         backgroundColor: ["tomato"],
                         hoverBackgroundColor: ["rgb(197, 72, 49)"],
-                        data: [0, 4000],
+                        data: [0, totalAmount],
                   },
             ],
       };
@@ -60,7 +63,7 @@ const Dashboard = () => {
                         <Typography variant='h1'>Dashboard</Typography>
                         <div className="dashboardSummary">
                               <div>
-                                    <p>Total Amount : 40000</p>
+                                    <p>Total Amount : रू {totalAmount}</p>
                               </div>
                               <div className="dashboardSummaryBox2">
                                     <Link to="/admin/products" >
