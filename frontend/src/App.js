@@ -31,7 +31,9 @@ import Login from "./components/User/LoginSignup";
 import NewProduct from './components/Admin/NewProduct';
 import UpdateProduct from './components/Admin/UpdateProduct';
 import OrderList from './components/Admin/OrderList';
-import UpdateOrder from './components/Admin/UpdateOrder.js';
+import UpdateOrder from './components/Admin/UpdateOrder';
+import Users from './components/Admin/Users.js';
+import UpdateUser from './components/Admin/UpdateUser.js';
 
 
 function App() {
@@ -80,6 +82,8 @@ function App() {
       <Route path="/admin/product/:id" element={isAuthenticated && user.role === "admin" ? <UpdateProduct /> : <Login />} />
       <Route path="/admin/orders" element={isAuthenticated && user.role === "admin" ? <OrderList /> : <Login />} />
       <Route path="/admin/order/:id" element={isAuthenticated && user.role === "admin" ? <UpdateOrder /> : <Login />} />
+      <Route path="/admin/users" element={isAuthenticated && user.role === "admin" ? <Users /> : <Login />} />
+      <Route path="/admin/user/:id" element={isAuthenticated && user.role === "admin" ? <UpdateUser /> : <Login />} />
     </Routes>
     <Footer />
   </Router>

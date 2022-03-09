@@ -35,6 +35,14 @@
       transition: all 0.5s;
 }
 
+.greenColor {
+      color: green !important;
+}
+
+.redColor {
+      color: red !important;
+}
+
 .productListTable a:hover {
       color: tomato;
 }

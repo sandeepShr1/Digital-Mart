@@ -65,6 +65,7 @@ export const profileReducer = (state = {}, action) => {
       switch (action.type) {
             case actionTypes.UPDATE_PROFILE_REQUEST:
             case actionTypes.UPDATE_PASSWORD_REQUEST:
+            case actionTypes.DELETE_USER_REQUEST:
                   return {
                         ...state,
                         loading: true,
@@ -78,6 +79,12 @@ export const profileReducer = (state = {}, action) => {
                         isUpdated: action.payload
 
                   }
+            case actionTypes.DELETE_USER_SUCCESS:
+                  return {
+                        ...state,
+                        loading: false,
+                        isDeleted: action.payload
+                  }
             case actionTypes.UPDATE_PROFILE_RESET:
             case actionTypes.UPDATE_PASSWORD_RESET:
                   return {
@@ -86,8 +93,16 @@ export const profileReducer = (state = {}, action) => {
                         isUpdated: false
 
                   }
+            case actionTypes.DELETE_USER_RESET:
+                  return {
+                        ...state,
+                        loading: false,
+                        isDeleted: false
+                  }
+
             case actionTypes.UPDATE_PROFILE_FAIL:
             case actionTypes.UPDATE_PASSWORD_FAIL:
+            case actionTypes.DELETE_USER_FAIL:
                   return {
                         ...state,
                         loading: false,
@@ -168,6 +183,82 @@ export const resetPasswordReducer = (state = {}, action) => {
                         error: null,
                   };
 
+            default:
+                  return state;
+      }
+}
+
+//ADMIN get all users
+export const usersReducer = (state = { users: [] }, action) => {
+      switch (action.type) {
+            case actionTypes.GET_USERS_REQUEST:
+                  return {
+                        ...state,
+                        loading: true
+                  }
+            case actionTypes.GET_USERS_SUCCESS:
+                  return {
+                        ...state,
+                        loading: false,
+                        users: action.payload
+                  }
+            case actionTypes.GET_USERS_FAIL:
+                  return {
+                        ...state,
+                        loading: false,
+                        error: action.error
+                  }
+            case actionTypes.CLEAR_ERRORS:
+                  return {
+                        ...state,
+                        error: null
+                  }
+            default:
+                  return state;
+      }
+}
+
+// admin update user
+export const userDetailsReducer = (state = { user: {} }, action) => {
+
+      switch (action.type) {
+            case actionTypes.EDIT_USER_REQUEST:
+            case actionTypes.GET_USER_REQUEST:
+                  return {
+                        ...state,
+                        loading: true
+                  }
+            case actionTypes.EDIT_USER_SUCCESS:
+                  return {
+                        ...state,
+                        loading: false,
+                        isUpdated: action.payload
+                  }
+            case actionTypes.GET_USER_SUCCESS:
+                  return {
+                        ...state,
+                        loading: false,
+                        user: action.payload
+                  }
+            case actionTypes.EDIT_USER_RESET:
+                  return {
+                        ...state,
+                        loading: false,
+                        isUpdated: false
+                  }
+            case actionTypes.EDIT_USER_FAIL:
+            case actionTypes.GET_USER_FAIL:
+                  return {
+                        ...state,
+                        loading: false,
+                        error: action.payload
+                  }
+
+            case actionTypes.CLEAR_ERRORS:
+                  return {
+                        ...state,
+                        error: null
+                  }
             default:
                   return state;
       }
