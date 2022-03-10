@@ -7,12 +7,26 @@
       display         : flex;
 }
 
-.ProductDetails>div {
-      width      : 100%;
-      align-items: center;
-      padding    : 2vmax;
-      box-sizing : border-box;
-      border     : 1px solid white;
+.d1 {
+      width          : 100%;
+      display        : flex;
+      flex-direction : column;
+      justify-content: space-evenly;
+      align-items    : center;
+      padding        : 2vmax;
+      box-sizing     : border-box;
+      border         : 1px solid white;
+}
+
+.d2 {
+      width          : 100%;
+      display        : flex;
+      flex-direction : column;
+      justify-content: space-evenly;
+      align-items    : center;
+      padding        : 2vmax;
+      box-sizing     : border-box;
+      border         : 1px solid white;
 }
 
 .ProductDetails>div:last-child {
@@ -79,7 +93,7 @@
 .detailsBlock-3-1-1>input {
       border    : none;
       padding   : 0.5vmax;
-      width     : 1vmax;
+      width     : 2vmax;
       text-align: center;
       outline   : none;
       font      : 400 0.8vmax "Roboto";
@@ -250,7 +264,7 @@
 
       .detailsBlock-3-1-1>input {
             padding: 1.5vmax;
-            width  : 3vmax;
+            width  : 7vmax;
             font   : 400 1.8vmax "Roboto";
       }
 

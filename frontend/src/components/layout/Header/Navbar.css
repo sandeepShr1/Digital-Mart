@@ -1,0 +1,172 @@
+.header {
+      background: radial-gradient(#fff, #ffd6d6);
+}
+
+.speedDial {
+      position: fixed;
+      right   : 1vmax;
+      top     : 9vmax;
+}
+
+.speedDialIcon {
+      width        : 56px;
+      height       : 56px;
+      border-radius: 100%;
+}
+
+.container {
+      max-width    : 1400px;
+      margin       : auto;
+      padding-left : 25px;
+      padding-right: 25px;
+}
+
+.navbar {
+      display        : flex;
+      align-items    : center;
+      padding        : 30px;
+      justify-content: space-around;
+}
+
+.nav-links {
+      display        : flex;
+      align-items    : center;
+      padding        : 30px;
+      justify-content: space-around;
+}
+
+.search {
+      width   : 100%;
+      position: relative;
+      display : flex;
+}
+
+.searchTerm {
+      width        : 100%;
+      border       : none;
+      border-right : none;
+      padding      : 5px;
+      height       : 36px;
+      border-radius: 5px 0 0 5px;
+      outline      : none;
+      color        : #9DBFAF;
+}
+
+.searchTerm:focus {
+      color: #00B4CC;
+}
+
+.searchButton {
+      width        : 40px;
+      height       : 36px;
+      border       : 1px solid #ff523b;
+      background   : #ff523b;
+      text-align   : center;
+      color        : #fff;
+      border-radius: 0 5px 5px 0;
+      cursor       : pointer;
+      font-size    : 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap {
+      width: 30%;
+}
+
+.nav {
+      text-align: right;
+}
+
+.nav>ul {
+      display        : inline-block;
+      list-style-type: none;
+}
+
+.nav>ul>li {
+      display     : inline-block;
+      margin-right: 20px;
+}
+
+.nav>ul>li>a {
+      text-decoration: none;
+      color          : #555;
+}
+
+p {
+      color: #555;
+}
+
+.ic {
+      margin: 0 25px;
+}
+
+.ic>a {
+      padding: 6px;
+}
+
+.active {
+      border-bottom: 1px solid #f39184;
+}
+
+.inactive {
+      background-color: transparent;
+}
+
+.nav-icon {
+      width      : 25px;
+      margin-left: 6px;
+      display    : none;
+}
+
+@media only screen and (max-width:1024px) {
+      .nav-links {
+            display       : flex;
+            flex-direction: column;
+            position      : absolute;
+            text-align    : center;
+            width         : 100%;
+            top           : 80px;
+            left          : -100%;
+            transition    : 0.5s all;
+      }
+
+      .nav {
+            text-align: center;
+      }
+
+      .nav-links.active {
+            z-index   : 2;
+            background: #333;
+            left      : 0;
+            display   : block;
+      }
+
+      .nav-icon {
+            display: flex;
+      }
+
+      .wrap {
+            padding-top: 5px;
+            margin     : auto;
+      }
+
+      .nav>ul>li {
+            display: block;
+            padding: 5px;
+      }
+
+      .nav>ul>li>a {
+            color: #fff;
+      }
+
+      .ic>a {
+            color: #fff;
+      }
+
+}
+
+@media only screen and (max-width:500px) {
+      .wrap {
+            width: 70%;
+      }
+}

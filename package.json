@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node backend/server.js",
     "dev": "nodemon backend/server.js",
-    "both": "concurrently \"npm run dev\" \"cd ./frontend && npm run start\""
+    "both": "concurrently \"npm run dev\" \"cd ./frontend && npm run start\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +24,7 @@
     "mongoose": "^6.1.5",
     "nodemailer": "^6.7.2",
     "nodemon": "^2.0.15",
+    "overlay-navbar": "^1.1.1",
     "validator": "^13.7.0",
     "webfontloader": "^1.6.28"
   }

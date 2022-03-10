@@ -56,70 +56,72 @@ const Products = () => {
                               <MetaData title="Products --Ecommerce" />
                               <h2 className="productsHeading">Latest Products</h2>
 
-                              <div className="products">
-                                    {products && products.map(product => {
-                                          return <ProductCart product={product} key={product._id} />
-                                    })}
-
-                              </div>
-
-                              <div className="filterBox">
-                                    <Typography>Price</Typography>
-                                    <Slider
-                                          value={price}
-                                          onChange={priceHandler}
-                                          valueLabelDisplay="auto"
-                                          aria-labelledby="range-slider"
-                                          min={0}
-                                          max={1000000}
-                                    />
-                                    <Typography >Categories</Typography>
-                                    <ul className="categoryBox">
-                                          {categories.map((category) => {
-                                                return <li
-                                                      className='category-link'
-                                                      key={category}
-                                                      onClick={() => setCategory(category)}
-                                                >
-                                                      {category}
-                                                </li>
+                              <div className="productContainer">
+                                    <div className="products">
+                                          {products && products.map(product => {
+                                                return <ProductCart product={product} key={product._id} />
                                           })}
-                                    </ul>
 
-                                    <fieldset>
-                                          <Typography component="legend" >Ratings</Typography>
-                                          <Slider
-                                                value={ratings}
-                                                onChange={(e, newRating) => {
-                                                      setRatings(newRating)
-                                                }}
-                                                aria-labelledby="continuous-slider"
-                                                valueLabelDisplay='auto'
-                                                min={0}
-                                                max={5}
-
-                                          />
-                                    </fieldset>
-                              </div>
-
-                              {resultPerPage < count && (
-                                    <div className="paginationBox">
-                                          <Pagination
-                                                activePage={currentPage}
-                                                itemsCountPerPage={resultPerPage}
-                                                totalItemsCount={productsCount}
-                                                onChange={setCurrentPageNo}
-                                                nextPageText="Next"
-                                                prevPageText="Prev"
-                                                firstPageText="1st"
-                                                lastPageText="Last"
-                                                itemClass="page-item"
-                                                linkClass="page-link"
-                                                activeClass="pageItemActive"
-                                                activeLinkClass="pageLinkActive"
-                                          />
                                     </div>
-                              )}
+
+                                    <div className="filterBox">
+                                          <Typography>Price</Typography>
+                                          <Slider
+                                                value={price}
+                                                onChange={priceHandler}
+                                                valueLabelDisplay="auto"
+                                                aria-labelledby="range-slider"
+                                                min={0}
+                                                max={1000000}
+                                          />
+                                          <Typography >Categories</Typography>
+                                          <ul className="categoryBox">
+                                                {categories.map((category) => {
+                                                      return <li
+                                                            className='category-link'
+                                                            key={category}
+                                                            onClick={() => setCategory(category)}
+                                                      >
+                                                            {category}
+                                                      </li>
+                                                })}
+                                          </ul>
+
+                                          <fieldset>
+                                                <Typography component="legend" >Ratings</Typography>
+                                                <Slider
+                                                      value={ratings}
+                                                      onChange={(e, newRating) => {
+                                                            setRatings(newRating)
+                                                      }}
+                                                      aria-labelledby="continuous-slider"
+                                                      valueLabelDisplay='auto'
+                                                      min={0}
+                                                      max={5}
+
+                                                />
+                                          </fieldset>
+                                    </div>
+
+                                    {resultPerPage < count && (
+                                          <div className="paginationBox">
+                                                <Pagination
+                                                      activePage={currentPage}
+                                                      itemsCountPerPage={resultPerPage}
+                                                      totalItemsCount={productsCount}
+                                                      onChange={setCurrentPageNo}
+                                                      nextPageText="Next"
+                                                      prevPageText="Prev"
+                                                      firstPageText="1st"
+                                                      lastPageText="Last"
+                                                      itemClass="page-item"
+                                                      linkClass="page-link"
+                                                      activeClass="pageItemActive"
+                                                      activeLinkClass="pageLinkActive"
+                                                />
+                                          </div>
+                                    )}
+                              </div>
                         </>
                   )}
             </>

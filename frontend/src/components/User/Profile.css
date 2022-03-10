@@ -1,10 +1,8 @@
 .profileContainer {
       display         : flex;
-      height          : 100vh;
+      height          : 70vh;
       width           : 100vw;
       position        : fixed;
-      top             : 0%;
-      left            : 0%;
       max-width       : 100%;
       background-color: white;
 }
@@ -94,6 +92,7 @@
 
 @media screen and (max-width: 600px) {
       .profileContainer {
+            padding-top   : 15px;
             flex-direction: column;
       }
 

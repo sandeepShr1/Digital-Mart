@@ -1,57 +1,43 @@
-.banner {
-      background-image   : url("../../images/cover.jpg");
-      background-position: center;
-      background-repeat  : no-repeat;
-      background-size    : cover;
-      height             : 100vmin;
-      display            : flex;
-      flex-direction     : column;
-      text-align         : center;
-      align-items        : center;
-      justify-content    : center;
-      color              : white;
+.container2 {
+      max-width    : 1400px;
+      margin       : auto;
+      padding-left : 25px;
+      padding-right: 25px;
+      height       : 70vh;
 }
 
-.banner>h1 {
-      margin: 5vmax;
-      font  : 600 2.5vmax "Roboto";
+.row {
+      display        : flex;
+      align-items    : center;
+      flex-wrap      : wrap;
+      justify-content: space-around;
 }
 
-.banner>p {
-      font: 400 2.5vmax "Roboto";
+.col-1 {
+      flex-basis: 50%;
+      min-width : 300px;
 }
 
-.banner>a {
-      font: 300 1.4vmax "Lucida Sans";
+.col-2>img {
+      max-width: 100%;
+      padding  : 50px 0;
 }
 
-.banner>a>button {
-      margin-bottom   : 5vmax;
-      cursor          : pointer;
-      background-color: white;
-      border          : 1px solid white;
-      border-radius   : 0;
-      padding         : 1vmax;
-      transition      : all 0.5s;
-      width           : 9vmax;
-      font            : 500 1vmax "Roboto";
+.col-1>h1 {
+      font-size  : 50px;
+      line-height: 60px;
+      margin     : 25px 0;
 }
 
-.banner>a>button:hover {
-      background-color: #c15fbb;
-      color           : white;
-}
-
-.banner::after {
-      content         : "";
-      width           : 100vw;
-      height          : 100vmin;
-      background-color: #ffffff;
-      position        : absolute;
-      top             : 0%;
-      clip-path       : polygon(100% 71%, 0 100%, 100% 100%);
-      left            : 0;
-      max-width       : 100%;
+.col-1>a>button {
+      display         : inline-block;
+      background-color: #ff523b;
+      color           : #fff;
+      padding         : 15px 30px;
+      margin          : 30px 0;
+      border-radius   : 30px;
+      font-size       : large;
+      border          : none;
 }
 
 .homeHeading {
@@ -65,7 +51,7 @@
       color        : rgb(0, 0, 0, 0.7);
 }
 
-.container {
+.container1 {
       display        : flex;
       margin         : 2vmax auto;
       width          : 80vw;
@@ -138,5 +124,30 @@
       .productCard>div>span {
             margin: 0 0.5vmax;
             font  : 300 1vmax "Roboto";
+      }
+}
+
+@media screen and (max-width: 380px) {
+      .col-2>img {
+            max-width  : 60%;
+            padding-top: 3px;
+
+      }
+
+      .col-1>a>button {
+
+            padding      : 10px 30px;
+            margin       : 20px 0;
+            border-radius: 30px;
+
+
+      }
+
+      .col-1>h1 {
+            font-size: 30px;
+      }
+
+      .col-1>p> {
+            font-size: 20px;
       }
 }

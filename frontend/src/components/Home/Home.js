@@ -7,6 +7,7 @@ import ProductCart from './ProductCart';
 import { clearError, getProduct } from "../../redux/actions/productActions";
 import Loader from "../layout/Loader/Loader"
 import { useAlert } from "react-alert";
+import shoppingImg from "../../images/shopping1.png"
 
 const Home = () => {
       const alert = useAlert();
@@ -25,20 +26,30 @@ const Home = () => {
             <>
                   {loading ? (<Loader />) : <>
                         <MetaData title="ECOMMERCE" />
-                        <div className="banner">
-                              <p>Welcome To DigitalMart</p>
-                              <h1>FIND AMAZING PRODUCTS BELOW</h1>
+                        <div className="header">
+                              <div className="container2">
+                                    <div className="row">
+                                          <div className="col-1">
+                                                <h1>Welcome To DigitalMart</h1>
+                                                <p>FIND AMAZING PRODUCTS BELOW</p>
+                                                <br />
+                                                <a href="#container" >
+                                                      <button >
+                                                            Scroll <CgMouse />
+                                                      </button>
+                                                </a>
+                                          </div>
+                                          <div className="col-2">
+                                                <img src={shoppingImg} alt="" />
+                                          </div>
 
-                              <a href="#container">
-                                    <button>
-                                          Scroll <CgMouse />
-                                    </button>
-                              </a>
+                                    </div>
+                              </div>
                         </div>
 
                         <h2 className="homeHeading">Features Products</h2>
 
-                        <div className="container" id='container'>
+                        <div className="container1" id='container'>
                               {products && products.map(product => {
                                     return <ProductCart product={product} key={product._id} />
                               })}

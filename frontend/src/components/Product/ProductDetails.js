@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom';
-import Carousel from "react-material-ui-carousel";
 import { clearError, getProductDetails, newReview } from "../../redux/actions/productActions";
 import "./ProductDetails.css";
 import MetaData from "../layout/MetaData";
@@ -12,7 +11,8 @@ import { addToCart } from "../../redux/actions/cartActions";
 import { Dialog, DialogActions, DialogContent, DialogTitle, Button } from "@mui/material"
 import { Rating } from '@mui/material';
 import { NEW_REVIEWS_RESET } from "../../redux/constants/productConstants"
-
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 const ProductDetails = () => {
 
@@ -35,6 +35,7 @@ const ProductDetails = () => {
             readOnly: true,
             precision: 0.5,
       }
+
 
       const decreaseQuantity = () => {
             if (quantity <= 1) return;
@@ -92,9 +93,12 @@ const ProductDetails = () => {
                   ) : (
                         <>
                               <MetaData title={`${product.name} -- ECOMMERCE`} />
+
                               <div className="ProductDetails">
-                                    <div>
-                                          <Carousel>
+                                    <div className='d1'>
+                                          <Carousel
+                                                
+                                          >
                                                 {product.images &&
                                                       product.images.map((item, i) => (
                                                             <img
@@ -107,7 +111,7 @@ const ProductDetails = () => {
                                           </Carousel>
                                     </div>
 
-                                    <div>
+                                    <div className='d2'>
                                           <div className="detailsBlock-1">
                                                 <h2>{product.name}</h2>
                                                 <p>Product # {product._id}</p>

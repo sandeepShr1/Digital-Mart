@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
-import Header from "./components/layout/Header/Header";
 import Footer from './components/layout/Footer/Footer';
 import Home from "./components/Home/Home"
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ProductDetails from "./components/Product/ProductDetails"
 import Products from "./components/Product/Products"
-import Search from "./components/Product/Search";
 import WebFont from "webfontloader";
 import LoginSignup from './components/User/LoginSignup';
 import store from "./redux/store";
@@ -36,7 +34,8 @@ import Users from './components/Admin/Users.js';
 import UpdateUser from './components/Admin/UpdateUser.js';
 import Reviews from './components/Admin/Reviews.js';
 import NotFound from "./components/layout/NotFound/NotFound.js"
-
+import Navbar from './components/layout/Header/Navbar';
+import About from "./components/layout/About/About.js"
 function App() {
 
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -50,20 +49,21 @@ function App() {
 
     store.dispatch(loadUser());
 
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 
   return <Router>
-    <Header />
+    <Navbar />
     {isAuthenticated && <UserOptions user={user} />}
     <Routes>
       <Route path='*' element={<NotFound />} />
       <Route exact path="/" element={<Home />} />
       <Route exact path="/product/:id" element={<ProductDetails />} />
       <Route exact path="/products" element={<Products />} />
+      <Route exact path="/about" element={<About />} />
       <Route path="/products/:keyword" element={<Products />} />
-      <Route exact path="/search" element={<Search />} />
       <Route exact path="/login" element={<LoginSignup />} />
       <Route exact path="/cart" element={<Cart />} />
       <Route path="/password/forgot" element={<ForgotPassword />} />

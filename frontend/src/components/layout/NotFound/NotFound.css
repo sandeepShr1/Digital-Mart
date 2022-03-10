@@ -1,73 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap');
+.PageNotFound {
+      margin         : auto;
+      text-align     : center;
+      padding        : 10vmax;
+      height         : 50vh;
+      display        : flex;
+      flex-direction : column;
+      justify-content: center;
+      align-items    : center;
+}
 
-.page {
-      font-family     : 'Merriweather', serif;
-      margin          : 0;
-      background-color: #9cc3d5;
-      text-align      : center;
+.PageNotFound>svg {
+      font-size: 7vmax;
+      color    : rgb(177, 62, 41);
+}
+
+.PageNotFound>p {
+      font-size: 2vmax;
+}
+
+.PageNotFound>a {
+      background-color: rgb(51, 51, 51);
       color           : white;
-      user-select     : none;
-      height          : 82vh;
-      padding-top     : 18vh;
-      position        : absolute;
-      width           : 100vw;
-      max-width       : 100%;
-      display         : grid;
-}
-
-.pageNotFoundContainer {
-      display         : flex;
-      flex-direction  : column;
-      align-items     : center;
-      width           : 100%;
-      background-color: #5ca3dd93;
-}
-
-.pageNotFoundContainer>h2 {
-      font-size  : 150px;
-      margin     : 0;
-      text-shadow: 15px 5px 2px black;
-}
-
-.pageNotFoundContainer>h3 {
-      font-size: 40px;
-      margin   : 20px;
-}
-
-.pageNotFoundContainer>p {
-      font-size: 18px;
-      margin   : 5px;
-}
-
-.pageNotFoundContainer>p:last-of-type {
-      margin-bottom: 35px;
-}
-
-.pageNotFoundContainer>a {
-      text-decoration: none;
-
+      border          : none;
+      padding         : 1vmax 3vmax;
+      cursor          : pointer;
+      font            : 400 1vmax "Roboto";
+      text-decoration : none;
+      margin          : 2vmax;
 }
 
 @media screen and (max-width: 600px) {
-      .page {
-            grid-template-columns: 1fr;
-            height               : 82%;
+      .PageNotFound>a {
+            padding: 3vw 6vw;
+            font   : 400 4vw "Roboto";
+            margin : 2vmax;
       }
 
-      .pageNotFoundContainer {
-            border-left: none;
+      .PageNotFound>svg {
+            font-size: 20vw;
       }
 
-      .pageNotFoundContainer>h2 {
-            font-size  : 100px;
-            text-shadow: 10px 5px 2px black;
-      }
-
-      .pageNotFoundContainer>h3 {
-            font-size: 26px;
-      }
-
-      .pageNotFoundContainer>p {
-            font-size: 18px;
+      .PageNotFound>p {
+            margin   : 2vmax;
+            font-size: 5vw;
       }
 }
