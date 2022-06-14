@@ -23,7 +23,7 @@ const FooterBanner = () => {
                         </div>
 
                         <img
-                              src={footerBanner} className="footer-banner-image"
+                              src={footerBanner} className="footer-banner-image" alt="footerImg"
                         />
                   </div>
             </div>

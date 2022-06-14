@@ -19,6 +19,7 @@ const Payment = () => {
 
       const alert = useAlert();
       const dispatch = useDispatch();
+      const hName = window.location.host;
 
 
       const order = {
@@ -66,8 +67,8 @@ const Payment = () => {
                               <input value={order.shippingPrice} name="pdc" type="hidden" />
                               <input value="EPAYTEST" name="scd" type="hidden" />
                               <input value={pid} name="pid" type="hidden" />
-                              <input value="http://localhost:3000/success?q=su" type="hidden" name="su" />
-                              <input value="http://localhost:3000/failed?q=fu" type="hidden" name="fu" />
+                              <input value={`https://${hName}/success?q=su`} type="hidden" name="su" />
+                              <input value={`https://${hName}/failed?q=fu`} type="hidden" name="fu" />
                               <button className='btn' type='submit' >Pay with esewa</button>
                         </form>
 

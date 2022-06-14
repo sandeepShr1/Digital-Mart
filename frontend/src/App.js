@@ -1,4 +1,4 @@
-import React, { useEffect, lazy } from 'react';
+import React, { useEffect } from 'react';
 import Footer from './components/layout/Footer/Footer';
 import Home from "./components/Home/Home"
 import './App.css';
