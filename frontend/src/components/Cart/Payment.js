@@ -7,6 +7,7 @@ import { createOrder, clearError } from "../../redux/actions/orderAction";
 import "./Payment.css"
 import { useAlert } from "react-alert";
 
+
 const Payment = () => {
       // const data = JSON.parse(sessionStorage.getItem("orderInfo"));
 
@@ -14,6 +15,7 @@ const Payment = () => {
       const { shippingInfo, cartItems } = useSelector(state => state.cart)
       // const { user } = useSelector(state => state.user)
       const { error } = useSelector((state) => state.newOrder);
+      const history = useNavigate();
 
       const alert = useAlert();
       const dispatch = useDispatch();
@@ -22,21 +24,25 @@ const Payment = () => {
       const order = {
             shippingInfo,
             orderItems: cartItems,
-            paymentInfo: { id: "112rw", status: "success" },
+            paymentInfo: { id: null, status: "fail" },
             itemsPrice: orderInfo.subtotal,
             taxPrice: Math.floor(orderInfo.tax),
             shippingPrice: orderInfo.shippingCharges,
             totalPrice: Math.floor(orderInfo.totalPrice)
       }
-
-      const history = useNavigate();
+      let pid = null;
+      cartItems && cartItems?.map(i => {
+            pid = i.product;
+            return pid
+      });
 
       const submitHandler = (e) => {
             e.preventDefault();
-            dispatch(createOrder(order))
-            history("/success");
-
+            dispatch(createOrder(order));
+            alert.success("Order Placed Successfully");
+            history("/orders");
       }
+
       useEffect(() => {
             if (error) {
                   alert.error(error);
@@ -51,9 +57,23 @@ const Payment = () => {
                   <CheckoutSteps activeStep={2} />
 
                   < div className="paymentContainer1" >
+
+                        <form className='paymentForm' action="https://uat.esewa.com.np/epay/main" method="POST">
+                              <input value={order.totalPrice} name="tAmt" type="hidden" />
+                              <input value={order.itemsPrice} name="amt" type="hidden" />
+                              <input value={order.taxPrice} name="txAmt" type="hidden" />
+                              <input value="0" name="psc" type="hidden" />
+                              <input value={order.shippingPrice} name="pdc" type="hidden" />
+                              <input value="EPAYTEST" name="scd" type="hidden" />
+                              <input value={pid} name="pid" type="hidden" />
+                              <input value="http://localhost:3000/success?q=su" type="hidden" name="su" />
+                              <input value="http://localhost:3000/failed?q=fu" type="hidden" name="fu" />
+                              <button className='btn' type='submit' >Pay with esewa</button>
+                        </form>
+
                         <h3>Pay on Delivery</h3>
                         <form className='paymentForm' >
-                              <button className='btn' onClick={submitHandler}>Pay with cash</button>
+                              <button className='btn' onClick={submitHandler}>Pay on Delivery</button>
                         </form>
                   </div>
 

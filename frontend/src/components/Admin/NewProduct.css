@@ -10,7 +10,7 @@
 
 .newProductContainer h1 {
       color     : rgba(0, 0, 0, 0.733);
-      font      : 300 2rem "Roboto";
+      font      : 300 2rem;
       text-align: center;
 }
 
@@ -22,9 +22,9 @@
       padding         : 3vmax;
       justify-content : space-evenly;
       height          : 70%;
-      width           : 40vh;
+      width           : 53vh;
       background-color: white;
-      box-shadow      : 0 0 10px rgba(0, 0, 0, 0.267);
+      box-shadow      : 0 0 10px rgb(0 0 0 / 27%);
 }
 
 .createProductForm>div {
@@ -42,7 +42,7 @@
       box-sizing   : border-box;
       border       : 1px solid rgba(0, 0, 0, 0.267);
       border-radius: 4px;
-      font         : 300 0.9vmax cursive;
+      font         : 300 0.9vmax;
       outline      : none;
 }
 
@@ -65,7 +65,7 @@
       height          : 5vh;
       border          : none;
       margin          : 0%;
-      font            : 400 0.8vmax cursive;
+      font            : 400 0.8vmax;
       transition      : all 0.5s;
       padding         : 0 1vmax;
       color           : rgba(0, 0, 0, 0.623);
@@ -90,7 +90,7 @@
       border          : none;
       background-color: tomato;
       color           : white;
-      font            : 300 0.9vmax "Roboto";
+      font            : 300 0.9vmax;
       width           : 100%;
       padding         : 0.8vmax;
       cursor          : pointer;
@@ -111,13 +111,15 @@
 
       .createProductForm {
             padding: 5vmax;
+            width  : 44vmax;
       }
+
 
       .createProductForm>div>input,
       .createProductForm>div>select,
       .createProductForm>div>textarea {
             padding: 2.5vmax 5vmax;
-            font   : 300 1.7vmax cursive;
+            font   : 300 1.7vmax;
       }
 
       .createProductForm>div>svg {
@@ -131,11 +133,11 @@
 
       #createProductFormFile>input::file-selector-button {
             height: 7vh;
-            font  : 400 1.8vmax cursive;
+            font  : 400 1.8vmax;
       }
 
       #createProductBtn {
-            font   : 300 1.9vmax "Roboto";
+            font   : 300 1.9vmax;
             padding: 1.8vmax;
       }
 }

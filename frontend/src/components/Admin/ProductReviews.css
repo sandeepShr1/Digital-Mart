@@ -18,7 +18,7 @@
 
 .productReviewsFormHeading {
       color     : rgba(0, 0, 0, 0.733);
-      font      : 300 2rem "Roboto";
+      font      : 300 2rem;
       text-align: center;
 }
 
@@ -36,7 +36,7 @@
       box-sizing   : border-box;
       border       : 1px solid rgba(0, 0, 0, 0.267);
       border-radius: 4px;
-      font         : 300 0.9vmax cursive;
+      font         : 300 0.9vmax;
       outline      : none;
 }
 
@@ -55,7 +55,7 @@
 
       .productReviewsForm>div>input {
             padding: 2.5vmax 5vmax;
-            font   : 300 1.7vmax cursive;
+            font   : 300 1.7vmax;
       }
 
       .productReviewsForm>div>svg {

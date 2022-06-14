@@ -1,24 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Rating } from '@mui/material';
 
 
 const ProductCart = ({ product }) => {
-      const options = {
-            size:"small",
-            value: product.ratings,
-            readOnly: true,
-            precision: 0.5,
-      }
       return (
-            <Link className='productCard' to={`/product/${product._id}`}>
-                  <img src={product.images[0].url} alt={product.name} />
-                  <p>{product.name}</p>
-                  <div>
-                        <Rating {...options} /> <span className='productCardSpan'>({product.numOfReviews} Reviews)</span>
-                  </div>
-                  <span>रू{product.price}</span>
-            </Link>
+            <div>
+                  <Link to={`/product/${product._id}`}>
+                        <div className="product-card">
+                              <img
+                                    src={product.images[0].url}
+                                    alt={product.name}
+                                    width={250}
+                                    height={250}
+                                    loading="lazy"
+                                    className='product-image'
+                              />
+                              <p className='product-name'>{product.name}</p>
+                              <p className='product-price'>रू {product.price}</p>
+                        </div>
+
+                  </Link>
+            </div>
       )
 }
 

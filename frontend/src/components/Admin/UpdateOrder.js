@@ -133,7 +133,7 @@ const UpdateOrder = () => {
                                                             {orderDetails.orderItems &&
                                                                   orderDetails.orderItems.map((item) => (
                                                                         <div key={item.product}>
-                                                                              <img src={item.image} alt="Product" />
+                                                                              <img src={item.image} alt="Product" loading='lazy' />
                                                                               <Link to={`/product/${item.product}`}>
                                                                                     {item.name}
                                                                               </Link>{" "}

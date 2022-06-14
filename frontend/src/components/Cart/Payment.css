@@ -23,7 +23,7 @@
       border          : none;
       background-color: tomato;
       color           : white;
-      font            : 300 0.9vmax "Roboto";
+      font            : 300 0.9vmax;
       width           : 100%;
       padding         : 0.8vmax;
       cursor          : pointer;
@@ -41,7 +41,7 @@
       }
 
       .btn {
-            font   : 300 4vw "Roboto";
+            font   : 300 4vw;
             padding: 4vw;
       }
 }

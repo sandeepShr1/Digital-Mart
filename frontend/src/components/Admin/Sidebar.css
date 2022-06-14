@@ -22,7 +22,7 @@
 .p {
       text-decoration: none;
       color          : rgba(0, 0, 0, 0.493);
-      font           : 200 1rem "Roboto";
+      font           : 200 1rem;
       padding        : 2rem;
       transition     : all 0.5s;
 }

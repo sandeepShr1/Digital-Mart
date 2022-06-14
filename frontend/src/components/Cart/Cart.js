@@ -60,7 +60,7 @@ const Cart = () => {
                                                 <CartItemCard item={item} deleteFromCart={deleteFromCart} />
                                                 <div className="cartInput">
                                                       <button onClick={() => decreaseQuantity(item.product, item.quantity)}>-</button>
-                                                      <input type="number" value={item.quantity} readOnly />
+                                                      <span>{item.quantity}</span>
                                                       <button onClick={() => increaseQuantity(item.product, item.quantity, item.stock)} >+</button>
                                                 </div>
                                                 <p className="cartSubtotal">{`रू${item.price * item.quantity}`}</p>

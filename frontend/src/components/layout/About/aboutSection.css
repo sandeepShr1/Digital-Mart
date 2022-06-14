@@ -6,6 +6,9 @@
       display              : grid;
       grid-template-columns: 4fr 4fr;
       position             : fixed;
+      left                 : 0;
+      margin-top           : 2rem;
+
 }
 
 .aboutSectionGradient {
@@ -29,7 +32,7 @@
 }
 
 .aboutSectionContainer>h1 {
-      font  : 400 3vmax "Roboto";
+      font  : 400 3vmax;
       color : tomato;
       margin: 2vmax;
 }
@@ -50,11 +53,11 @@
 
 .aboutSectionContainer>div>div>p {
       color: rgba(0, 0, 0, 0.623);
-      font : 100 1vmax "Roboto";
+      font : 100 1vmax;
 }
 
 .aboutSectionContainer>div>div>span {
-      font      : 100 1vmax "Roboto";
+      font      : 100 1vmax;
       color     : rgba(0, 0, 0, 0.616);
       text-align: center;
       width     : 80%;
@@ -66,7 +69,7 @@
 
 .aboutSectionContainer2>h2 {
       color : rgba(0, 0, 0, 0.623);
-      font  : 100 2vmax "Roboto";
+      font  : 100 2vmax;
       margin: 2vmax;
 }
 
@@ -88,16 +91,16 @@
       }
 
       .aboutSectionContainer>h1 {
-            font  : 400 5vmax "Roboto";
+            font  : 400 5vmax;
             margin: 3vmax;
       }
 
       .aboutSectionContainer>div>div>p {
-            font: 100 2vmax "Roboto";
+            font: 100 2vmax;
       }
 
       .aboutSectionContainer>div>div>span {
-            font : 100 1.4vmax "Roboto";
+            font : 100 1.4vmax;
             width: 70%;
       }
 
@@ -106,7 +109,7 @@
       }
 
       .aboutSectionContainer2>h2 {
-            font  : 100 3vmax "Roboto";
+            font  : 100 3vmax;
             margin: 2vmax;
       }
 

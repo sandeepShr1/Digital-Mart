@@ -57,7 +57,7 @@ const Products = () => {
                               <h2 className="productsHeading">Latest Products</h2>
 
                               <div className="productContainer">
-                                    <div className="products">
+                                    <div className="products-container">
                                           {products && products.map(product => {
                                                 return <ProductCart product={product} key={product._id} />
                                           })}
@@ -112,7 +112,7 @@ const Products = () => {
                                                       onChange={setCurrentPageNo}
                                                       nextPageText="Next"
                                                       prevPageText="Prev"
-                                                      firstPageText="1st"
+                                                      firstPageText="First"
                                                       lastPageText="Last"
                                                       itemClass="page-item"
                                                       linkClass="page-link"

@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy } from 'react';
 import Footer from './components/layout/Footer/Footer';
 import Home from "./components/Home/Home"
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ProductDetails from "./components/Product/ProductDetails"
 import Products from "./components/Product/Products"
-import WebFont from "webfontloader";
 import LoginSignup from './components/User/LoginSignup';
 import store from "./redux/store";
 import { loadUser } from './redux/actions/userActions';
@@ -36,17 +35,14 @@ import Reviews from './components/Admin/Reviews.js';
 import NotFound from "./components/layout/NotFound/NotFound.js"
 import Navbar from './components/layout/Header/Navbar';
 import About from "./components/layout/About/About.js"
+import Failed from './components/Cart/Failed';
+import ValidatePayment from './components/Cart/ValidatePayment';
+
 function App() {
 
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
   useEffect(() => {
-    WebFont.load({
-      google: {
-        families: ["Roboto", "Droid Sans", "Chilanka"],
-      },
-    });
-
     store.dispatch(loadUser());
 
 
@@ -57,37 +53,46 @@ function App() {
   return <Router>
     <Navbar />
     {isAuthenticated && <UserOptions user={user} />}
-    <Routes>
-      <Route path='*' element={<NotFound />} />
-      <Route exact path="/" element={<Home />} />
-      <Route exact path="/product/:id" element={<ProductDetails />} />
-      <Route exact path="/products" element={<Products />} />
-      <Route exact path="/about" element={<About />} />
-      <Route path="/products/:keyword" element={<Products />} />
-      <Route exact path="/login" element={<LoginSignup />} />
-      <Route exact path="/cart" element={<Cart />} />
-      <Route path="/password/forgot" element={<ForgotPassword />} />
-      <Route path="/password/reset/:token" element={<ResetPassword />} />
-      <Route path="/account" element={isAuthenticated ? <Profile /> : <Login />} />
-      <Route path="/me/update" element={isAuthenticated ? <UpdateProfile /> : <Login />} />
-      <Route path="/password/update" element={isAuthenticated ? <UpdatePassword /> : <Login />} />
-      <Route path="/shipping" element={isAuthenticated ? <Shipping /> : <Login />} />
-      <Route path="/order/confirm" element={isAuthenticated ? <ConfirmOrder /> : <Login />} />
-      <Route path="/process/payment" element={isAuthenticated ? <Payment /> : <Login />} />
-      <Route path="/success" element={isAuthenticated ? <Success /> : <Login />} />
-      <Route path="/orders" element={isAuthenticated ? <MyOrders /> : <Login />} />
-      <Route path="/order/:id" element={isAuthenticated ? <OrderDetails /> : <Login />} />
 
-      <Route path="/admin/dashboard" element={isAuthenticated && user.role === "admin" ? <Dashboard /> : <Login />} />
-      <Route path="/admin/products" element={isAuthenticated && user.role === "admin" ? <ProductList /> : <Login />} />
-      <Route path="/admin/product/" element={isAuthenticated && user.role === "admin" ? <NewProduct /> : <Login />} />
-      <Route path="/admin/product/:id" element={isAuthenticated && user.role === "admin" ? <UpdateProduct /> : <Login />} />
-      <Route path="/admin/orders" element={isAuthenticated && user.role === "admin" ? <OrderList /> : <Login />} />
-      <Route path="/admin/order/:id" element={isAuthenticated && user.role === "admin" ? <UpdateOrder /> : <Login />} />
-      <Route path="/admin/users" element={isAuthenticated && user.role === "admin" ? <Users /> : <Login />} />
-      <Route path="/admin/user/:id" element={isAuthenticated && user.role === "admin" ? <UpdateUser /> : <Login />} />
-      <Route path="/admin/reviews" element={isAuthenticated && user.role === "admin" ? <Reviews /> : <Login />} />
-    </Routes>
+    <div className="main-container">
+      <Routes>
+        <Route path='*' element={<NotFound />} />
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/product/:id" element={<ProductDetails />} />
+        <Route exact path="/products" element={<Products />} />
+        <Route exact path="/about" element={<About />} />
+        <Route path="/products/:keyword" element={<Products />} />
+        <Route exact path="/login" element={<LoginSignup />} />
+        <Route exact path="/cart" element={<Cart />} />
+        <Route path="/password/forgot" element={<ForgotPassword />} />
+        <Route path="/password/reset/:token" element={<ResetPassword />} />
+        <Route path="/account" element={isAuthenticated ? <Profile /> : <Login />} />
+        <Route path="/me/update" element={isAuthenticated ? <UpdateProfile /> : <Login />} />
+        <Route path="/password/update" element={isAuthenticated ? <UpdatePassword /> : <Login />} />
+        <Route path="/shipping" element={isAuthenticated ? <Shipping /> : <Login />} />
+        <Route path="/order/confirm" element={isAuthenticated ? <ConfirmOrder /> : <Login />} />
+        <Route path="/process/payment" element={isAuthenticated ? <Payment /> : <Login />} />
+        <Route path="/epay/transrec" element={isAuthenticated ? <ValidatePayment /> : <Login />} />
+        <Route path="/success" element={isAuthenticated ? <Success /> : <Login />} />
+        <Route path="/failed" element={isAuthenticated ? <Failed /> : <Login />} />
+        <Route path="/orders" element={isAuthenticated ? <MyOrders /> : <Login />} />
+        <Route path="/order/:id" element={isAuthenticated ? <OrderDetails /> : <Login />} />
+
+        {/* <Route element={<ProtectedRoute isAuthenticated={isAuthenticated } isAdmin={true} adminRoute={true} />}>
+        <Route path="/admin/dashboard" element={<Dashboard />} />
+      </Route> */}
+
+        <Route path="/admin/dashboard" element={isAuthenticated && user.role === "admin" ? <Dashboard /> : <Login />} />
+        <Route path="/admin/products" element={isAuthenticated && user.role === "admin" ? <ProductList /> : <Login />} />
+        <Route path="/admin/product/" element={isAuthenticated && user.role === "admin" ? <NewProduct /> : <Login />} />
+        <Route path="/admin/product/:id" element={isAuthenticated && user.role === "admin" ? <UpdateProduct /> : <Login />} />
+        <Route path="/admin/orders" element={isAuthenticated && user.role === "admin" ? <OrderList /> : <Login />} />
+        <Route path="/admin/order/:id" element={isAuthenticated && user.role === "admin" ? <UpdateOrder /> : <Login />} />
+        <Route path="/admin/users" element={isAuthenticated && user.role === "admin" ? <Users /> : <Login />} />
+        <Route path="/admin/user/:id" element={isAuthenticated && user.role === "admin" ? <UpdateUser /> : <Login />} />
+        <Route path="/admin/reviews" element={isAuthenticated && user.role === "admin" ? <Reviews /> : <Login />} />
+      </Routes>
+    </div>
     <Footer />
   </Router>
 

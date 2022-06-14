@@ -7,7 +7,8 @@
       align-items     : center;
       background-color: rgb(231, 231, 231);
       position        : fixed;
-
+      left            : 0;
+      margin          : 2rem 0;
 }
 
 .LoginSignUpBox {
@@ -25,7 +26,7 @@
 
 .login_signUp_toggle>p {
       color      : rgba(0, 0, 0, 0.678);
-      font       : 300 1vmax "Roboto";
+      font       : 300 1vmax;
       transition : all 0.5s;
       cursor     : pointer;
       display    : grid;
@@ -76,7 +77,7 @@
       box-sizing   : border-box;
       border       : 1px solid rgba(0, 0, 0, 0.267);
       border-radius: 4px;
-      font         : 300 0.9vmax cursive;
+      font         : 300 0.9vmax;
       outline      : none;
 }
 
@@ -117,7 +118,7 @@
       height          : 5vh;
       border          : none;
       margin          : 0%;
-      font            : 400 0.8vmax cursive;
+      font            : 400 0.8vmax;
       transition      : all 0.5s;
       padding         : 0 1vmax;
       color           : rgba(0, 0, 0, 0.623);
@@ -133,7 +134,7 @@
       border          : none;
       background-color: tomato;
       color           : white;
-      font            : 300 0.9vmax "Roboto";
+      font            : 300 0.9vmax;
       width           : 100%;
       padding         : 0.8vmax;
       cursor          : pointer;
@@ -179,7 +180,7 @@
       }
 
       .login_signUp_toggle>p {
-            font: 600 1rem "Roboto";
+            font: 600 1rem;
       }
 
       .loginForm,
@@ -190,7 +191,7 @@
       .loginForm>div>input,
       .signUpForm>div>input {
             padding: 1rem 2.3rem;
-            font   : 500 1rem "Roboto";
+            font   : 500 1rem;
       }
 
       .loginForm>div>svg,
@@ -209,12 +210,12 @@
 
       #registerImage>input::file-selector-button {
             height: 7vh;
-            font  : 600 1rem "Roboto";
+            font  : 600 1rem;
       }
 
       .loginBtn,
       .signUpBtn {
-            font   : 600 1.3rem "Roboto";
+            font   : 600 1.3rem;
             padding: 1.8vmax;
       }
 }

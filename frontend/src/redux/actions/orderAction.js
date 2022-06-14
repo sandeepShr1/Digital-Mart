@@ -3,6 +3,7 @@ import axios from "axios";
 
 // Create Order
 export const createOrder = (order) => async (dispatch) => {
+      console.log(order)
       try {
             dispatch({ type: actionTypes.CREATE_ORDER_REQUEST });
 

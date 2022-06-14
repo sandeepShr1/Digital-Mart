@@ -24,15 +24,31 @@
       border          : none;
       padding         : 1vmax 3vmax;
       cursor          : pointer;
-      font            : 400 1vmax "Roboto";
+      font            : 400 1vmax;
       text-decoration : none;
       margin          : 2vmax;
+}
+
+.btn {
+      border          : none;
+      background-color: tomato;
+      color           : white;
+      font            : 300 0.9vmax;
+      width           : 100%;
+      padding         : 0.8vmax;
+      cursor          : pointer;
+      transition      : all 0.5s;
+      outline         : none;
+}
+
+.btn:hover {
+      background-color: rgb(179, 66, 46);
 }
 
 @media screen and (max-width: 600px) {
       .orderSuccess>a {
             padding: 3vw 6vw;
-            font   : 400 4vw "Roboto";
+            font   : 400 4vw;
             margin : 2vmax;
       }
 
