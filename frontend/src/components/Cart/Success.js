@@ -60,7 +60,6 @@ const Success = () => {
 
       // }
       const confirmPayment = () => {
-            console.log(order)
             dispatch(createOrder(order));
 
             alert.success("Order Placed Successfully");
@@ -73,11 +72,6 @@ const Success = () => {
             }
       }, [dispatch, error, alert]);
 
-      // useEffect(() => {
-      //       post(path, params)
-      //       var response = document.getElementsByTagName("response_code").innerHTML;
-      //       console.log(response)
-      // }, []);
 
       return (
             <div className="orderSuccess">
@@ -85,13 +79,7 @@ const Success = () => {
 
                   <Typography>Your Order has been Placed successfully </Typography>
                   <button className='btn' onClick={confirmPayment}>View orders</button>
-                  {/* <form action="https://uat.esewa.com.np/epay/transrec" method="GET">
-                        <input value={order.totalPrice} name="amt" type="hidden" />
-                        <input value="EPAYTEST" name="scd" type="hidden" />
-                        <input value={pid} name="pid" type="hidden" />
-                        <input value={refId} name="rid" type="hidden" />
-                        <input value="View Orders" type="submit" />
-                  </form> */}
+                  
 
             </div>
       )

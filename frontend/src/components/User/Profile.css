@@ -1,12 +1,14 @@
 .profileContainer {
+
       display         : flex;
-      height          : 70vh;
-      width           : 100vw;
-      position        : fixed;
+      height          : 81vh;
+      width           : 100vw vw;
+      /* position     : fixed; */
       max-width       : 100%;
-      left            : 0;
+      /* left         : 0; */
       margin          : 2rem 0;
       background-color: white;
+
 }
 
 .profileContainer>div {

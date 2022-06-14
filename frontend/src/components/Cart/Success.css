@@ -29,12 +29,14 @@
       margin          : 2vmax;
 }
 
+.orderSuccess>button {}
+
 .btn {
       border          : none;
       background-color: tomato;
       color           : white;
       font            : 300 0.9vmax;
-      width           : 100%;
+      width           : 20%;
       padding         : 0.8vmax;
       cursor          : pointer;
       transition      : all 0.5s;

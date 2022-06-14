@@ -1,15 +1,17 @@
 .myOrdersPage {
-      width           : 100vw;
-      margin-top      : 2vmax;
-      max-width       : 100%;
-      padding         : 0 7vmax;
+      background-color: #ebebeb;
       box-sizing      : border-box;
-      background-color: rgb(235, 235, 235);
-      position        : fixed;
-      height          : 100%;
       display         : flex;
       flex-direction  : column;
+      height          : 64vh;
+      margin-top      : 1vmax;
+      max-width       : 100%;
+      padding         : 0 7vmax;
+      left            : 0;
+      /* position     : fixed; */
+      width           : 100vw;
 }
+
 
 #myOrdersHeading {
       text-align      : center;
