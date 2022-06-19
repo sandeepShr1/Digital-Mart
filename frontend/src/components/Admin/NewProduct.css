@@ -27,6 +27,27 @@
       box-shadow      : 0 0 10px rgb(0 0 0 / 27%);
 }
 
+.createProductForm {
+      display         : flex;
+      flex-direction  : column;
+      align-items     : center;
+      margin          : auto;
+      padding         : 3vmax;
+      justify-content : space-evenly;
+      height          : 70%;
+      width           : 53vh;
+      background-color: white;
+      box-shadow      : 0 0 10px rgb(0 0 0 / 27%);
+}
+
+.banner {
+
+      height: 93%;
+      width : 68vh;
+
+}
+
+
 .createProductForm>div {
       display    : flex;
       width      : 100%;

@@ -5,9 +5,10 @@ import { TreeView, TreeItem } from "@material-ui/lab";
 import {
       ExpandMore, PostAdd, Add,
       ListAlt, ImportExport, Dashboard,
-      People, RateReview
+      People, RateReview,
 } from "@mui/icons-material";
 import logo from "../../images/logo.png"
+import ViewCarouselIcon from '@mui/icons-material/ViewCarousel';
 
 const Sidebar = () => {
       return (
@@ -53,6 +54,22 @@ const Sidebar = () => {
                               Reviews
                         </p>
                   </Link>
+                  <div className='p'>
+                        <TreeView
+                              defaultCollapseIcon={<ExpandMore />}
+                              defaultExpandIcon={<ImportExport />}
+                        >
+                              <TreeItem nodeId="1" label="Banners">
+                                    <Link to="/admin/banners">
+                                          <TreeItem nodeId="2" label="All" icon={<PostAdd />} />
+                                    </Link>
+
+                                    <Link to="/admin/banner">
+                                          <TreeItem nodeId="3" label="Create" icon={<Add />} />
+                                    </Link>
+                              </TreeItem>
+                        </TreeView>
+                  </div>
             </div>
       )
 }

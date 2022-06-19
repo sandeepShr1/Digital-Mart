@@ -18,6 +18,7 @@ app.use(fileUpload());
 const product = require("./routes/productRoute");
 const user = require("./routes/userRoute");
 const order = require("./routes/orderRoute")
+const banner = require("./routes/bannerRoute");
 
 
 //config 
@@ -29,6 +30,7 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 app.use('/api/v1', product);
 app.use('/api/v1', user);
 app.use('/api/v1', order);
+app.use('/api/v1', banner);
 
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 
