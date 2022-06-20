@@ -39,6 +39,7 @@ import Failed from './components/Cart/Failed';
 import ValidatePayment from './components/Cart/ValidatePayment';
 import Banners from './components/Admin/Banner/Banners';
 import NewBanner from './components/Admin/Banner/NewBanner';
+import UpdateBanner from './components/Admin/Banner/UpdateBanner';
 
 function App() {
 
@@ -96,6 +97,7 @@ function App() {
 
         <Route path="/admin/banners" element={isAuthenticated && user.role === "admin" ? <Banners /> : <Login />} />
         <Route path="/admin/banner/" element={isAuthenticated && user.role === "admin" ? <NewBanner /> : <Login />} />
+        <Route path="/admin/banner/:id" element={isAuthenticated && user.role === "admin" ? <UpdateBanner /> : <Login />} />
       </Routes>
     </div>
     <Footer />

@@ -4,45 +4,40 @@ import { DataGrid } from '@mui/x-data-grid';
 import { useDispatch, useSelector } from "react-redux";
 import { useAlert } from "react-alert";
 import MetaData from "../../layout/MetaData";
-import { Link } from "react-router-dom";
-// import { DELETE_PRODUCT_RESET } from "../../redux/constants/productConstants"
+import { Link, useNavigate } from "react-router-dom";
 import { Edit, Delete } from "@mui/icons-material"
 import { Button } from '@mui/material';
 import SideBar from "../Sidebar";
-import { clearError, getBanner } from '../../../redux/actions/bannerActions';
+import { clearError, deleteBanner, getBanner } from '../../../redux/actions/bannerActions';
+import { DELETE_BANNER_RESET } from '../../../redux/constants/bannerConstants';
 
 const Banners = () => {
       const alert = useAlert();
       const dispatch = useDispatch();
-      // const history = useNavigate();
+      const history = useNavigate();
 
-      const { error, banners } = useSelector(state => state.banners)
-      // const { error: deleteError, isDeleted } = useSelector(
-      //       (state) => state.product
-      // );
+      const { error, banners, isDeleted } = useSelector(state => state.banners)
 
 
-      // const deleteProductHandler = (id) => {
-      //       dispatch(deleteProduct(id));
-      // }
+
+      const deleteBannerHandler = (id) => {
+            dispatch(deleteBanner(id));
+      }
 
       useEffect(() => {
             if (error) {
                   alert.error(error);
                   dispatch(clearError());
             }
-            // if (deleteError) {
-            //       alert.error(deleteError);
-            //       dispatch(clearError());
-            // }
-            // if (isDeleted) {
-            //       alert.success("Product Deleted Successfully");
-            //       history("/admin/dashboard");
-            //       dispatch({ type: DELETE_PRODUCT_RESET });
-            // }
+
+            if (isDeleted) {
+                  alert.success("BAnner Deleted Successfully");
+                  history("/admin/dashboard");
+                  dispatch({ type: DELETE_BANNER_RESET });
+            }
 
             dispatch(getBanner());
-      }, [dispatch, alert, error]);
+      }, [dispatch, alert, error, isDeleted, history]);
 
       const columns = [
             { field: "id", headerName: "Banner ID", minWidth: 200, flex: 0.5 },
@@ -83,7 +78,7 @@ const Banners = () => {
                                     </Link>
 
                                     <Button
-                                    // onClick={() => deleteProductHandler(params.getValue(params.id, "id"))}
+                                          onClick={() => deleteBannerHandler(params.getValue(params.id, "id"))}
                                     >
                                           <Delete />
                                     </Button>

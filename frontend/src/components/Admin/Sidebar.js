@@ -8,7 +8,6 @@ import {
       People, RateReview,
 } from "@mui/icons-material";
 import logo from "../../images/logo.png"
-import ViewCarouselIcon from '@mui/icons-material/ViewCarousel';
 
 const Sidebar = () => {
       return (

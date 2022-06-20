@@ -112,10 +112,10 @@
 
 @media screen and (max-width: 500px) {
       .footer-banner-image {
-            max-width: 27vmax;
+            max-width: 28vmax;
             /* width : 77%; */
-            left     : 37%;
+            left     : 40%;
             top      : 37%;
-            height   : 45%;
+            height   : 44%;
       }
 }

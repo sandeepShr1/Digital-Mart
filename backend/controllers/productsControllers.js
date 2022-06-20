@@ -82,7 +82,7 @@ exports.updateProduct = catchAsyncError(async (req, res, next) => {
     if (!product) {
         return res.status(500).json({
             success: false,
-            "message": "product not found"
+            "message": "product not found!"
         })
     }
 

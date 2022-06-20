@@ -9,7 +9,7 @@ const HeaderBanner = () => {
       const alert = useAlert();
       const dispatch = useDispatch();
       const { error, banners } = useSelector(state => state.banners)
-
+      const i = 0;
       useEffect(() => {
             if (error) {
                   alert.error(error);
@@ -25,18 +25,18 @@ const HeaderBanner = () => {
       return (
             <div className='hero-banner-container'>
                   <div>
-                        <p className="beats-solo">{banners[2] && banners[2].midText}</p>
-                        <h3>{banners[2] && banners[2].product}</h3>
-                        <h1>{banners[2] && banners[2].largeText1}</h1>
-                        <img src={banners[2] && banners[2].images[0].url} alt="headphones" className='hero-banner-image' />
+                        <p classsName="beats-solo">{banners[i] && banners[i].midText}</p>
+                        <h3>{banners[i] && banners[i].product}</h3>
+                        <h1>{banners[i] && banners[i].largeText1}</h1>
+                        <img src={banners[i] && banners[i].images[i].url} alt="headphones" className='hero-banner-image' />
                   </div>
                   <div>
                         <Link to="/products">
-                              <button type="button">{banners[2] && banners[2].buttonText}</button>
+                              <button type="button">{banners[i] && banners[i].buttonText}</button>
                         </Link>
                         <div className="desc">
                               <h5>Description</h5>
-                              <p>{banners[2] && banners[2].desc}</p>
+                              <p>{banners[i] && banners[i].desc}</p>
                         </div>
                   </div>
             </div>
